@@ -1,0 +1,32 @@
+{
+  "name": "quantai",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.47.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.468.0",
+    "next": "14.2.21",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.14.1",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.21",
+    "tailwindcss": "^4",
+    "typescript": "^5.5.0"
+  }
+}
