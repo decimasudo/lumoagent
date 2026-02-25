@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
 
     // 3. Simpan riwayat ke Supabase secara diam-diam (tidak menghentikan proses jika gagal)
     try {
-      const supabase = createClient()
+      const supabase = await createClient()
       const { data: { user } } = await supabase.auth.getUser()
       
       if (user) {
