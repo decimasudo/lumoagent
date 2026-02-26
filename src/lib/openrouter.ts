@@ -14,20 +14,21 @@ export async function analyzeStock(ticker: string, stockData: any, apiKey: strin
 
   if (agentType === 'technical') {
     systemPrompt = `You are an elite Quantitative & Technical Trading Analyst. 
-    Your core directive: Analyze the price action, volatility, moving averages, and statistical risk levels. 
-    Do not focus on company fundamentals. 
+    Your core directive: Analyze the price action, volatility, moving averages, statistical risk levels, and recent news catalysts. 
+    Do not focus on long-term company fundamentals. 
     
     ${baseRules}
     
     Required Output Structure:
     ### 1. Quantitative Overview
     ### 2. Volatility & Momentum Analysis
-    ### 3. Risk Management Strategy
-    ### 4. Technical Verdict (Buy/Sell/Hold with defined zones)
+    ### 3. News & Catalyst Impact (Briefly assess if recent news explains the current price action)
+    ### 4. Risk Management Strategy
+    ### 5. Technical Verdict (Buy/Sell/Hold with defined zones)
     `;
   } else {
     systemPrompt = `You are an elite Value Investing & Fundamental Analyst.
-    Your core directive: Analyze intrinsic value, valuation multiples (P/E), market cap, yields, and macroeconomic positioning.
+    Your core directive: Analyze intrinsic value, valuation multiples (P/E), market cap, yields, macroeconomic positioning, and recent news.
     Do not focus on short-term chart patterns.
     
     ${baseRules}
@@ -35,9 +36,16 @@ export async function analyzeStock(ticker: string, stockData: any, apiKey: strin
     Required Output Structure:
     ### 1. Fundamental Overview
     ### 2. Valuation Analysis
-    ### 3. Long-term Risk Assessment
-    ### 4. Investment Verdict (Undervalued/Fairly Valued/Overvalued)
+    ### 3. Recent News & Market Catalysts (Analyze the impact of the latest headlines)
+    ### 4. Long-term Risk Assessment
+    ### 5. Investment Verdict (Undervalued/Fairly Valued/Overvalued)
     `;
+  }
+
+  // Merakit teks berita agar mudah dibaca oleh AI
+  let newsText = "No recent news available.";
+  if (stockData.news && stockData.news.length > 0) {
+    newsText = stockData.news.map((n: any) => `- "${n.title}" (Source: ${n.publisher})`).join('\n');
   }
 
   const userPrompt = `
@@ -56,9 +64,12 @@ export async function analyzeStock(ticker: string, stockData: any, apiKey: strin
   - 20-Day SMA: $${stockData.quantitative?.sma20?.toFixed(2) || 'N/A'}
   - 30-Day Volatility (Std Dev): ${stockData.quantitative?.volatility?.toFixed(2) || 'N/A'}
   - Calculated Risk Level: ${stockData.quantitative?.riskLevel || 'Unknown'}
+
+  **Recent News Headlines (Catalysts):**
+  ${newsText}
   `;
 
-  // FIX: Membersihkan API Key dari spasi atau karakter 'enter' tersembunyi
+  // Membersihkan API Key dari spasi atau karakter enter tersembunyi untuk mencegah ECONNRESET
   const cleanApiKey = apiKey.replace(/[\r\n\s]+/g, '');
 
   try {
@@ -88,47 +99,10 @@ export async function analyzeStock(ticker: string, stockData: any, apiKey: strin
     const data = await response.json();
     return data.choices[0].message.content;
   } catch (error: any) {
-    // FIX: Melacak penyebab asli jaringan putus
     console.error("[OpenRouter] Detailed Fetch Error:", error.message);
     if (error.cause) {
        console.error("[OpenRouter] Network Cause:", error.cause);
     }
-    
-    // Fallback: Generate basic analysis without AI
-    console.log("[OpenRouter] Using fallback analysis due to network error");
-    
-    if (agentType === 'technical') {
-      return `### Technical Analysis for ${ticker}
-
-**Quantitative Overview**
-- Current Price: $${stockData.currentPrice}
-- 20-Day SMA: $${stockData.quantitative?.sma20?.toFixed(2) || 'N/A'}
-- Volatility: ${stockData.quantitative?.volatility?.toFixed(2) || 'N/A'}
-- Risk Level: ${stockData.quantitative?.riskLevel || 'Unknown'}
-
-**Technical Assessment**
-Due to network connectivity issues, a full AI-powered analysis is unavailable. Based on available data:
-- The stock shows ${stockData.quantitative?.riskLevel === 'High' ? 'high volatility' : 'moderate volatility'}
-- Consider consulting additional technical indicators for complete analysis.
-
-*Note: This is a basic analysis. Please try again later for comprehensive AI insights.*`;
-    } else {
-      return `### Fundamental Analysis for ${ticker}
-
-**Company Overview**
-- Company: ${stockData.companyName}
-- Current Price: $${stockData.currentPrice}
-- Market Cap: $${stockData.marketCap?.toLocaleString() || 'N/A'}
-
-**Valuation Metrics**
-- P/E Ratio: ${stockData.peRatio || 'N/A'}
-- EPS: $${stockData.eps || 'N/A'}
-- Dividend Yield: ${stockData.dividendYield ? (stockData.dividendYield * 100).toFixed(2) + '%' : 'N/A'}
-
-**Fundamental Assessment**
-Due to network connectivity issues, a full AI-powered analysis is unavailable. The stock's valuation appears ${stockData.peRatio ? (stockData.peRatio > 20 ? 'expensive' : stockData.peRatio < 15 ? 'attractive' : 'fair') : 'unclear'} based on P/E ratio.
-
-*Note: This is a basic analysis. Please try again later for comprehensive AI insights.*`;
-    }
+    throw new Error(`Connection to AI server failed: ${error.message}`);
   }
 }

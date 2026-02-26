@@ -92,7 +92,27 @@ export async function fetchQuoteData(ticker: string): Promise<any | null> {
       }
     }
 
-    // 3. MERAKIT DATA
+    // 3. MENGAMBIL BERITA TERBARU (FITUR DEEP RESEARCH)
+    let recentNews: any[] = [];
+    try {
+      // Endpoint pencarian Yahoo untuk mengambil berita terkait ticker
+      const newsUrl = `https://query2.finance.yahoo.com/v1/finance/search?q=${symbol}&quotesCount=0&newsCount=5`;
+      const newsRes = await fetch(newsUrl, { headers, cache: 'no-store' });
+      
+      if (newsRes.ok) {
+        const newsData = await newsRes.json();
+        // Memfilter dan mengambil 5 berita teratas
+        recentNews = (newsData.news || []).map((item: any) => ({
+          title: item.title,
+          publisher: item.publisher,
+          link: item.link
+        }));
+      }
+    } catch (newsError) {
+      console.error(`[stocks.ts] Failed to fetch news for ${symbol}:`, newsError);
+    }
+
+    // 4. MERAKIT DATA (Ditambahkan array 'news')
     return {
       symbol: quote.symbol,
       companyName: quote.shortName || quote.longName || symbol,
@@ -108,7 +128,8 @@ export async function fetchQuoteData(ticker: string): Promise<any | null> {
         sma20,
         volatility,
         riskLevel
-      }
+      },
+      news: recentNews // Data berita diselipkan di sini untuk diakses OpenRouter
     };
 
   } catch (error: any) {

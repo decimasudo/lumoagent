@@ -9,7 +9,6 @@ import { Send, Bot, Briefcase, Activity, AlertTriangle, ChevronDown } from 'luci
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { QuantCard } from '@/components/dashboard/QuantCard'
 
-// DAFTAR ASET YANG DIDUKUNG (Mencegah input error)
 const SUPPORTED_TICKERS = [
   { symbol: 'AAPL', name: 'Apple Inc.' },
   { symbol: 'MSFT', name: 'Microsoft Corp.' },
@@ -85,7 +84,6 @@ export default function Dashboard() {
       })
       const data = await res.json()
       
-      // Menangani error jika koin/saham tidak ada
       if (!res.ok) throw new Error(data.error || 'Analysis failed. Please check the asset.')
       
       setAnalysis(data.analysis)
@@ -235,7 +233,16 @@ export default function Dashboard() {
                     <div className="w-10 h-10 bg-zinc-900 rounded-full flex items-center justify-center shrink-0 shadow-lg">
                       <Bot className="w-5 h-5 text-white" />
                     </div>
-                    <div className="bg-white border border-zinc-100 p-8 rounded-3xl rounded-tl-none shadow-sm prose prose-zinc max-w-none text-zinc-800 leading-relaxed font-medium text-[15px]">
+                    {/* CSS FIX: Menyuntikkan styling margin dan typography kustom yang meng-override Tailwind Preflight */}
+                    <div className="bg-white border border-zinc-100 p-8 rounded-3xl rounded-tl-none shadow-sm text-zinc-800 leading-relaxed font-medium text-[15px]
+                      [&>h3]:text-lg [&>h3]:font-black [&>h3]:mt-8 [&>h3]:mb-3 [&>h3]:text-zinc-900 [&>h3]:uppercase [&>h3]:tracking-tight
+                      [&>h4]:font-bold [&>h4]:mt-6 [&>h4]:mb-2 [&>h4]:text-zinc-800
+                      [&>p]:mb-5 
+                      [&>ul]:mb-6 [&>ul]:list-disc [&>ul]:pl-6 [&>ul>li]:mb-2 [&>ul>li]:marker:text-zinc-400
+                      [&>ol]:mb-6 [&>ol]:list-decimal [&>ol]:pl-6 [&>ol>li]:mb-2
+                      [&>strong]:text-zinc-900 [&>strong]:font-bold
+                      first:[&>h3]:mt-0
+                    ">
                       <ReactMarkdown>{analysis}</ReactMarkdown>
                     </div>
                   </div>
@@ -248,7 +255,6 @@ export default function Dashboard() {
           )}
         </div>
 
-        {/* INPUT BAR DIUBAH MENJADI DROPDOWN */}
         <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-white via-white to-transparent">
           <form onSubmit={handleAnalyze} className="max-w-3xl mx-auto relative group">
             <div className="relative">
@@ -265,7 +271,6 @@ export default function Dashboard() {
                   </option>
                 ))}
               </select>
-              {/* Custom Dropdown Arrow */}
               <div className="absolute right-20 top-0 bottom-0 flex items-center pointer-events-none text-zinc-400 group-hover:text-zinc-900 transition-colors">
                 <ChevronDown className="w-5 h-5" />
               </div>
