@@ -4,7 +4,6 @@ export async function analyzeStock(ticker: string, stockData: any, apiKey: strin
   
   let systemPrompt = "";
   
-  // INSTRUKSI KETAT: Memaksa AI menggunakan gaya akademis dan melarang emotikon
   const baseRules = `
     STRICT RULES:
     1. STRICTLY NO EMOJIS. Do not use any emojis, unicode icons, or graphical symbols under any circumstances.
@@ -59,35 +58,77 @@ export async function analyzeStock(ticker: string, stockData: any, apiKey: strin
   - Calculated Risk Level: ${stockData.quantitative?.riskLevel || 'Unknown'}
   `;
 
+  // FIX: Membersihkan API Key dari spasi atau karakter 'enter' tersembunyi
+  const cleanApiKey = apiKey.replace(/[\r\n\s]+/g, '');
+
   try {
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${apiKey}`,
+        "Authorization": `Bearer ${cleanApiKey}`,
         "Content-Type": "application/json",
-        // Direkomendasikan oleh OpenRouter
         "HTTP-Referer": "https://quantai.vercel.app", 
         "X-Title": "QuantAI Terminal"
       },
       body: JSON.stringify({
-        model: "anthropic/claude-3-haiku", // Model ini sangat patuh pada instruksi format
+        model: "anthropic/claude-3-haiku", 
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: userPrompt }
         ],
-        temperature: 0.2 // Diturunkan agar AI lebih analitis dan tidak terlalu kreatif/bertele-tele
+        temperature: 0.2
       })
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      throw new Error(`OpenRouter API Error: ${errorText}`);
+      throw new Error(`OpenRouter API HTTP ${response.status}: ${errorText}`);
     }
 
     const data = await response.json();
     return data.choices[0].message.content;
   } catch (error: any) {
-    console.error("[OpenRouter] Error:", error.message);
-    throw new Error("Failed to generate AI analysis. Please try again.");
+    // FIX: Melacak penyebab asli jaringan putus
+    console.error("[OpenRouter] Detailed Fetch Error:", error.message);
+    if (error.cause) {
+       console.error("[OpenRouter] Network Cause:", error.cause);
+    }
+    
+    // Fallback: Generate basic analysis without AI
+    console.log("[OpenRouter] Using fallback analysis due to network error");
+    
+    if (agentType === 'technical') {
+      return `### Technical Analysis for ${ticker}
+
+**Quantitative Overview**
+- Current Price: $${stockData.currentPrice}
+- 20-Day SMA: $${stockData.quantitative?.sma20?.toFixed(2) || 'N/A'}
+- Volatility: ${stockData.quantitative?.volatility?.toFixed(2) || 'N/A'}
+- Risk Level: ${stockData.quantitative?.riskLevel || 'Unknown'}
+
+**Technical Assessment**
+Due to network connectivity issues, a full AI-powered analysis is unavailable. Based on available data:
+- The stock shows ${stockData.quantitative?.riskLevel === 'High' ? 'high volatility' : 'moderate volatility'}
+- Consider consulting additional technical indicators for complete analysis.
+
+*Note: This is a basic analysis. Please try again later for comprehensive AI insights.*`;
+    } else {
+      return `### Fundamental Analysis for ${ticker}
+
+**Company Overview**
+- Company: ${stockData.companyName}
+- Current Price: $${stockData.currentPrice}
+- Market Cap: $${stockData.marketCap?.toLocaleString() || 'N/A'}
+
+**Valuation Metrics**
+- P/E Ratio: ${stockData.peRatio || 'N/A'}
+- EPS: $${stockData.eps || 'N/A'}
+- Dividend Yield: ${stockData.dividendYield ? (stockData.dividendYield * 100).toFixed(2) + '%' : 'N/A'}
+
+**Fundamental Assessment**
+Due to network connectivity issues, a full AI-powered analysis is unavailable. The stock's valuation appears ${stockData.peRatio ? (stockData.peRatio > 20 ? 'expensive' : stockData.peRatio < 15 ? 'attractive' : 'fair') : 'unclear'} based on P/E ratio.
+
+*Note: This is a basic analysis. Please try again later for comprehensive AI insights.*`;
+    }
   }
 }

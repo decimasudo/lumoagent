@@ -1,15 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // MENGHAPUS: output: 'export'
+  
+  // Mengizinkan Next.js memproses gambar dari domain eksternal jika diperlukan nanti
   images: {
-    unoptimized: true,
+    remotePatterns: [],
   },
-  // Suppress specific warnings
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
+
+  // Menyembunyikan peringatan turbopack/caching yang tidak relevan
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
   },
 };
 

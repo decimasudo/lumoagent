@@ -17,7 +17,9 @@ export async function POST(request: NextRequest) {
     console.log(`[API] Analyzing ${tickerSymbol} with ${agentType} agent...`)
 
     // 1. Ambil data mentah + kalkulasi kuantitatif
+    console.log(`[API] Fetching stock data for ${tickerSymbol}...`);
     const stockData = await fetchQuoteData(tickerSymbol)
+    console.log(`[API] Stock data fetched:`, stockData ? 'success' : 'null');
 
     if (!stockData) {
       // Inilah alasan Anda mendapatkan pesan error 404 sebelumnya
@@ -29,10 +31,13 @@ export async function POST(request: NextRequest) {
 
     // 2. Lempar ke Agen AI
     const openRouterKey = process.env.OPENROUTER_API_KEY
+    console.log(`[API] OpenRouter key present: ${!!openRouterKey}`);
     let aiAnalysis = ''
 
     if (openRouterKey) {
+      console.log(`[API] Calling analyzeStock...`);
       aiAnalysis = await analyzeStock(tickerSymbol, stockData, openRouterKey, agentType)
+      console.log(`[API] AI analysis completed`);
     } else {
       return NextResponse.json({ success: false, error: 'OpenRouter API Key is missing.' }, { status: 500 })
     }
