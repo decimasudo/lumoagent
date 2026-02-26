@@ -21,13 +21,13 @@ export function QuantCard({ data, isWatchlisted = false, onToggleWatchlist }: Qu
     rsiColor = 'text-red-600'
     rsiStatus = 'Overbought'
   } else if (rsi <= 30 && rsi > 0) {
-    rsiColor = 'text-emerald-600'
+    rsiColor = 'text-orange-600'
     rsiStatus = 'Oversold'
   }
 
   // 2. Logika Warna Trend
   const isBullish = q.trend === 'Bullish'
-  const trendColor = isBullish ? 'text-emerald-600' : 'text-red-600'
+  const trendColor = isBullish ? 'text-orange-600' : 'text-red-600'
   const TrendIcon = isBullish ? TrendingUp : TrendingDown
 
   return (
@@ -85,7 +85,7 @@ export function QuantCard({ data, isWatchlisted = false, onToggleWatchlist }: Qu
             <p className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest">RSI (14D)</p>
             <span className={`text-[9px] px-1.5 py-0.5 rounded-md font-bold uppercase tracking-widest border ${
               rsiStatus === 'Overbought' ? 'bg-red-50 text-red-600 border-red-100' :
-              rsiStatus === 'Oversold' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' :
+              rsiStatus === 'Oversold' ? 'bg-orange-50 text-orange-600 border-orange-100' :
               'bg-zinc-100 text-zinc-500 border-zinc-200'
             }`}>
               {rsiStatus}
@@ -102,7 +102,7 @@ export function QuantCard({ data, isWatchlisted = false, onToggleWatchlist }: Qu
             Risk Profile <AlertCircle className="w-3 h-3" />
           </p>
           <p className={`text-xl font-black tracking-tight ${
-            q.riskLevel === 'High' ? 'text-red-600' : 'text-emerald-600'
+            q.riskLevel === 'High' ? 'text-red-600' : 'text-orange-600'
           }`}>
             {q.riskLevel || 'Unknown'}
           </p>

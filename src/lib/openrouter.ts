@@ -78,8 +78,8 @@ export async function analyzeStock(ticker: string, stockData: any, apiKey: strin
       headers: {
         "Authorization": `Bearer ${cleanApiKey}`,
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://quantai.vercel.app", 
-        "X-Title": "QuantAI Terminal"
+        "HTTP-Referer": "https://lumoagent.vercel.app", 
+        "X-Title": "LumoAgent Terminal"
       },
       body: JSON.stringify({
         model: selectedModel, 

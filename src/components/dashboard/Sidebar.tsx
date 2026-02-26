@@ -44,10 +44,10 @@ export function Sidebar({
       <div className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide pb-4">
         {/* Logo */}
         <div className="h-16 flex items-center px-6 border-b border-zinc-100 sticky top-0 bg-white z-10">
-          <div className="w-8 h-8 bg-zinc-900 rounded-lg flex items-center justify-center mr-3 shadow-sm">
-            <TrendingUp className="text-white w-5 h-5" />
+          <div className="w-8 h-8 bg-white border-2 border-orange-200 rounded-lg flex items-center justify-center mr-3 shadow-sm p-1">
+            <img src="/logo.jpeg" alt="LumoAgent" className="w-full h-full rounded" />
           </div>
-          <span className="font-bold text-xl tracking-tight text-zinc-900">QuantAI</span>
+          <span className="font-bold text-xl tracking-tight text-zinc-900">LumoAgent</span>
         </div>
 
         {/* Main Menu */}

@@ -59,10 +59,8 @@ export default function SignIn() {
         {/* Logo */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl flex items-center justify-center">
-              <BarChart3 className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-2xl font-bold text-slate-900">QuantAI</span>
+            <img src="/logo.jpeg" alt="LumoAgent" className="w-10 h-10 rounded-xl" />
+            <span className="text-2xl font-bold text-slate-900">LumoAgent</span>
           </Link>
         </div>
 
@@ -92,7 +90,7 @@ export default function SignIn() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
                   required
-                  className="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 />
               </div>
             </div>
@@ -110,7 +108,7 @@ export default function SignIn() {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
                   required
-                  className="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 />
               </div>
             </div>
@@ -118,7 +116,7 @@ export default function SignIn() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 text-white py-3 rounded-xl font-semibold transition-colors flex items-center justify-center"
+              className="w-full bg-[#FF8C00] hover:bg-[#B24D00] disabled:bg-slate-300 text-white py-3 rounded-xl font-semibold transition-colors flex items-center justify-center"
             >
               {loading ? (
                 <>
@@ -134,7 +132,7 @@ export default function SignIn() {
           <div className="mt-6 text-center">
             <p className="text-slate-600">
               Don't have an account?{' '}
-              <Link href="/auth/signup" className="text-blue-600 hover:text-blue-700 font-medium">
+              <Link href="/auth/signup" className="text-[#FF8C00] hover:text-[#B24D00] font-medium">
                 Sign Up
               </Link>
             </p>

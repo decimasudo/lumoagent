@@ -209,7 +209,7 @@ export default function Dashboard() {
       <main className="flex-1 flex flex-col relative h-full overflow-hidden">
         <header className="h-16 flex items-center justify-between px-8 border-b border-zinc-100 sticky top-0 bg-white/80 backdrop-blur-md z-20">
           <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+            <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />
             <h1 className="text-sm font-bold uppercase tracking-widest text-zinc-400">Terminal V1.5</h1>
           </div>
           
@@ -320,7 +320,7 @@ export default function Dashboard() {
                   <h2 className="text-2xl font-black tracking-tight text-zinc-900">Agent Market</h2>
                   <p className="text-zinc-500 text-sm mt-1">Select and deploy AI models for your analysis workspace.</p>
                 </div>
-                <div className="px-3 py-1 bg-emerald-50 text-emerald-600 text-xs font-bold rounded-full border border-emerald-100 uppercase tracking-wider">
+                <div className="px-3 py-1 bg-orange-50 text-orange-600 text-xs font-bold rounded-full border border-orange-100 uppercase tracking-wider">
                   Active Model: {selectedModel.split('/')[1] || selectedModel}
                 </div>
               </div>
@@ -398,9 +398,9 @@ export default function Dashboard() {
                         // setActiveMenu('dashboard');
                       }}
                       className={`w-full py-2.5 rounded-xl text-xs font-bold uppercase tracking-wide transition-all ${
-                        selectedModel === agent.id 
-                          ? 'bg-emerald-50 text-emerald-600 border border-emerald-200 cursor-default'
-                          : 'bg-zinc-900 text-white hover:bg-black shadow-md hover:shadow-lg hover:scale-[1.02]'
+                        selectedModel === agent.id
+                          ? 'bg-orange-50 text-orange-600 border border-orange-200 cursor-default'
+                          : 'bg-orange-500 text-white hover:bg-orange-600 shadow-md hover:shadow-lg hover:scale-[1.02]'
                       }`}
                     >
                       {selectedModel === agent.id ? 'Deployed' : 'Deploy Model'}
@@ -455,17 +455,17 @@ export default function Dashboard() {
                   <div className="space-y-3">
                     <div className="flex items-center justify-between p-3 bg-zinc-50 rounded-xl border border-zinc-100">
                       <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                        <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />
                         <span className="text-sm font-bold text-zinc-700">Yahoo Finance API</span>
                       </div>
-                      <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">CONNECTED</span>
+                      <span className="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded">CONNECTED</span>
                     </div>
                     <div className="flex items-center justify-between p-3 bg-zinc-50 rounded-xl border border-zinc-100">
                       <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                        <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />
                         <span className="text-sm font-bold text-zinc-700">OpenRouter AI</span>
                       </div>
-                      <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded">OPERATIONAL</span>
+                      <span className="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded">OPERATIONAL</span>
                     </div>
                   </div>
                 </div>
@@ -509,7 +509,7 @@ export default function Dashboard() {
             <button
               type="submit"
               disabled={loading || !ticker}
-              className="absolute right-3 top-3 bottom-3 px-6 bg-zinc-900 text-white rounded-xl hover:bg-black transition-all flex items-center"
+              className="absolute right-3 top-3 bottom-3 px-6 bg-orange-500 text-white rounded-xl hover:bg-orange-600 transition-all flex items-center"
             >
               <Send className="w-5 h-5" />
             </button>

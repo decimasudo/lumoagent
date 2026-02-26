@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "QuantAI - AI-Powered Stock Analysis",
+  title: "LumoAgent - AI-Powered Stock Analysis",
   description: "Get quantitative insights and risk analysis for any stock in seconds using AI",
 };
 

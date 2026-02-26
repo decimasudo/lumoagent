@@ -12,10 +12,8 @@ export default function LandingPage() {
           <div className="flex justify-between items-center h-[72px]">
             <div className="flex items-center">
               <Link href="/" className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-lg flex items-center justify-center">
-                  <BarChart3 className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-bold text-slate-900">QuantAI</span>
+                <img src="/logo.jpeg" alt="LumoAgent" className="w-8 h-8 rounded-lg" />
+                <span className="text-xl font-bold text-slate-900">LumoAgent</span>
               </Link>
             </div>
 
@@ -40,7 +38,7 @@ export default function LandingPage() {
               </Link>
               <Link
                 href="/auth/signup"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg font-medium transition-all hover:scale-[1.02] shadow-lg shadow-blue-600/25"
+                className="bg-[#FF8C00] hover:bg-[#B24D00] text-white px-5 py-2.5 rounded-lg font-medium transition-all hover:scale-[1.02] shadow-lg shadow-[#FF8C00]/25"
               >
                 Get Started
               </Link>
@@ -53,14 +51,14 @@ export default function LandingPage() {
       <section className="hero-gradient pt-[72px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center px-4 py-2 bg-blue-50 rounded-full text-blue-700 text-sm font-medium mb-8">
+            <div className="inline-flex items-center px-4 py-2 bg-[#FF8C00]/10 rounded-full text-[#FF8C00] text-sm font-medium mb-8">
               <Zap className="w-4 h-4 mr-2" />
               AI-Powered Financial Analysis
             </div>
 
             <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
               Smart Stock Analysis
-              <span className="block text-blue-600">Powered by AI</span>
+              <span className="block text-[#FF8C00]">Powered by AI</span>
             </h1>
 
             <p className="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
@@ -71,7 +69,7 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/dashboard"
-                className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:scale-[1.02] shadow-xl shadow-blue-600/25 flex items-center justify-center"
+                className="w-full sm:w-auto bg-[#FF8C00] hover:bg-[#B24D00] text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:scale-[1.02] shadow-xl shadow-[#FF8C00]/25 flex items-center justify-center"
               >
                 Start Analyzing Free
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -110,13 +108,13 @@ export default function LandingPage() {
                   </div>
                   <div className="h-12 w-px bg-slate-200"></div>
                   <div className="text-center">
-                    <p className="text-4xl font-bold text-blue-600">2.41T</p>
+                    <p className="text-4xl font-bold text-[#FF8C00]">2.41T</p>
                     <p className="text-sm text-slate-500">Market Cap</p>
                   </div>
                 </div>
                 <div className="bg-slate-50 rounded-xl p-6">
                   <h4 className="font-semibold text-slate-900 mb-3 flex items-center">
-                    <Brain className="w-5 h-5 mr-2 text-blue-600" />
+                    <Brain className="w-5 h-5 mr-2 text-[#FF8C00]" />
                     AI Analysis
                   </h4>
                   <p className="text-slate-600 text-sm leading-relaxed">
@@ -146,8 +144,8 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Feature 1 */}
             <div className="bg-slate-50 rounded-2xl p-8 transition-all card-hover border border-slate-100">
-              <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-                <TrendingUp className="w-7 h-7 text-blue-600" />
+              <div className="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
+                <TrendingUp className="w-7 h-7 text-[#FF8C00]" />
               </div>
               <h3 className="text-xl font-semibold text-slate-900 mb-3">
                 Quantitative Analysis
@@ -205,7 +203,7 @@ export default function LandingPage() {
             {/* Step 1 */}
             <div className="relative text-center">
               <div className="w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center mx-auto mb-6 relative z-10">
-                <span className="text-3xl font-bold text-blue-600">1</span>
+                <span className="text-3xl font-bold text-[#FF8C00]">1</span>
               </div>
               <h3 className="text-xl font-semibold text-slate-900 mb-3">
                 Enter Ticker
@@ -221,7 +219,7 @@ export default function LandingPage() {
             {/* Step 2 */}
             <div className="relative text-center">
               <div className="w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center mx-auto mb-6 relative z-10">
-                <Brain className="w-8 h-8 text-blue-600" />
+                <Brain className="w-8 h-8 text-[#FF8C00]" />
               </div>
               <h3 className="text-xl font-semibold text-slate-900 mb-3">
                 AI Analysis
@@ -250,7 +248,7 @@ export default function LandingPage() {
           <div className="text-center mt-12">
             <Link
               href="/dashboard"
-              className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors"
+              className="inline-flex items-center text-[#FF8C00] font-semibold hover:text-[#B24D00] transition-colors"
             >
               Try it now
               <ChevronRight className="ml-1 w-5 h-5" />
@@ -260,18 +258,18 @@ export default function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-blue-600 to-indigo-700">
+      <section className="py-24 bg-gradient-to-br from-[#FF8C00] to-[#B24D00]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">
             Ready to Make Smarter Investment Decisions?
           </h2>
-          <p className="text-xl text-blue-100 mb-10">
+          <p className="text-xl text-orange-100 mb-10">
             Join thousands of investors using AI to analyze stocks and manage risk.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/auth/signup"
-              className="w-full sm:w-auto bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:scale-[1.02] shadow-lg"
+              className="w-full sm:w-auto bg-white text-[#FF8C00] px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:scale-[1.02] shadow-lg"
             >
               Get Started Free
             </Link>
@@ -291,10 +289,10 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div className="col-span-2">
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-br from-[#FF8C00] to-[#B24D00] rounded-lg flex items-center justify-center">
                   <BarChart3 className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold text-white">QuantAI</span>
+                <span className="text-xl font-bold text-white">LumoAgent</span>
               </div>
               <p className="text-slate-400 max-w-md">
                 AI-powered stock analysis platform helping investors make smarter decisions with quantitative insights and risk management.
@@ -346,7 +344,7 @@ export default function LandingPage() {
 
           <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between">
             <p className="text-slate-500 text-sm">
-              &copy; {new Date().getFullYear()} QuantAI. All rights reserved.
+              &copy; {new Date().getFullYear()} LumoAgent. All rights reserved.
             </p>
             <p className="text-slate-500 text-sm mt-4 md:mt-0">
               Investing involves risk. This is for educational purposes only.
