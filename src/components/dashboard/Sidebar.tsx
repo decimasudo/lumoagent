@@ -34,7 +34,7 @@ export function Sidebar({
   
   const menuItems = [
     { id: 'dashboard', label: 'Workspace', icon: LayoutDashboard },
-    { id: 'agents', label: 'Agent Market', icon: Bot },
+    { id: 'agents', label: 'LUMO Hub', icon: Bot },
     { id: 'settings', label: 'Settings', icon: Settings },
   ]
 

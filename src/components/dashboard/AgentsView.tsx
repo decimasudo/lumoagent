@@ -1,47 +1,21 @@
 'use client'
 
-import { Bot } from 'lucide-react'
+import { Bot, Github, Terminal, Zap, Search, TrendingUp, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
 
-const VendorIcon = ({ provider }: { provider: string }) => {
-  if (provider === 'Google DeepMind') {
-    return (
-      <svg viewBox="0 0 24 24" className="w-5 h-5" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-      </svg>
-    );
-  }
-  if (provider === 'Meta AI') {
-    return (
-      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M16.14 7.66C15.11 7.66 14.12 8.1 13.31 8.89L12 10.18L10.69 8.89C9.88 8.1 8.89 7.66 7.86 7.66C5.18 7.66 3 9.84 3 12.52C3 15.2 5.18 17.38 7.86 17.38C8.89 17.38 9.88 16.94 10.69 16.15L12 14.86L13.31 16.15C14.12 16.94 15.11 17.38 16.14 17.38C18.82 17.38 21 15.2 21 12.52C21 9.84 18.82 7.66 16.14 7.66ZM16.14 15.62C15.59 15.62 15.06 15.39 14.63 14.97L13.41 13.75L14.63 12.53C15.06 12.11 15.59 11.88 16.14 11.88C17.29 11.88 18.23 12.82 18.23 13.97C18.23 15.12 17.29 16.06 16.14 16.06V15.62ZM7.86 11.88C8.41 11.88 8.94 12.11 9.37 12.53L10.59 13.75L9.37 14.97C8.94 15.39 8.41 15.62 7.86 15.62C6.71 15.62 5.77 14.68 5.77 13.53C5.77 12.38 6.71 11.44 7.86 11.44V11.88Z" fill="#0668E1"/>
-      </svg>
-    );
-  }
-  if (provider === 'Mistral AI') {
-    return (
-      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="#f5d0fe">
-        <path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13h-13L12 6.5z" />
-      </svg>
-    );
-  }
-  if (provider === 'OpenAI') {
-    return (
-      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="#10a37f">
-        <path d="M22.28 9.82a5.98 5.98 0 0 0-.51-4.91 6.04 6.04 0 0 0-4.75-2.91 6.04 6.04 0 0 0-5.42 2.48 6.04 6.04 0 0 0-5.42-2.48 6.04 6.04 0 0 0-4.75 2.91 5.98 5.98 0 0 0-.51 4.91 6.05 6.05 0 0 0 1.26 5.49 5.98 5.98 0 0 0 .51 4.91 6.04 6.04 0 0 0 4.75 2.91 6.04 6.04 0 0 0 5.42-2.48 6.04 6.04 0 0 0 5.42 2.48 6.04 6.04 0 0 0 4.75-2.91 5.98 5.98 0 0 0 .51-4.91 6.05 6.05 0 0 0-1.26-5.49zM18.26 15.51a3.8 3.8 0 0 1-1.89 1.1l-1.9.46-1.1 1.89a3.81 3.81 0 0 1-5.18 1.39 3.81 3.81 0 0 1-1.39-5.18l1.1-1.9-.46-1.9a3.81 3.81 0 0 1 1.39-5.18 3.81 3.81 0 0 1 5.18 1.39l1.1 1.9 1.9-.46a3.8 3.8 0 0 1 1.89-1.1c.36-.08.72-.04 1.05.1a3.81 3.81 0 0 1 1.39 5.18l-1.1 1.9.46 1.9c.08.36.04.72-.1 1.05-.28.67-.82 1.21-1.49 1.49z" />
-      </svg>
-    );
-  }
-  if (provider === 'Alibaba Cloud') {
-    return (
-      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="#ff6a00">
-        <path d="M12 2L4 7v10l8 5 8-5V7l-8-5zm0 15.5l-5-3.1V8.6l5-3.1 5 3.1v5.8l-5 3.1z" />
-      </svg>
-    );
-  }
-  return <Bot className="w-5 h-5" />;
+interface Skill {
+  id: number
+  name: string
+  slug: string
+  description: string
+  category: string
+  author: string
+  github_url: string
+  install_command: string
+  featured?: boolean
+  popular?: boolean
+  tags?: string[]
 }
 
 interface AgentsViewProps {
@@ -50,98 +24,253 @@ interface AgentsViewProps {
 }
 
 export function AgentsView({ selectedModel, onModelSelect }: AgentsViewProps) {
-  const agents = [
-    {
-      id: 'google/gemini-2.0-flash-001',
-      name: 'Gemini Flash 2.0',
-      provider: 'Google DeepMind',
-      desc: 'Multimodal model optimized for high-speed financial analysis.',
-      tags: ['Fast', 'Free Tier']
-    },
-    {
-      id: 'meta-llama/llama-3.1-8b-instruct',
-      name: 'Llama 3.1 8B',
-      provider: 'Meta AI',
-      desc: 'Balanced open-source model with strong reasoning capabilities.',
-      tags: ['Open Source']
-    },
-    {
-      id: 'mistralai/mistral-small-24b-instruct-2501:free',
-      name: 'Mistral Small 3',
-      provider: 'Mistral AI',
-      desc: 'Efficient model specializing in concise and direct answers.',
-      tags: ['Fast', 'Low Latency']
-    },
-    {
-      id: 'openai/o3-mini-high',
-      name: 'O3 Mini High',
-      provider: 'OpenAI',
-      desc: 'Advanced model for complex reasoning and deep analysis tasks.',
-      tags: ['Reasoning', 'Complex Logic']
-    },
-    {
-      id: 'qwen/qwen-turbo',
-      name: 'Qwen Turbo',
-      provider: 'Alibaba Cloud',
-      desc: 'High-performance model with strong multilingual capabilities.',
-      tags: ['Multilingual', 'Enterprise']
-    }
+  const [allSkills, setAllSkills] = useState<Skill[]>([])
+  const [filteredSkills, setFilteredSkills] = useState<Skill[]>([])
+  const [loading, setLoading] = useState(true)
+  const [activeFilter, setActiveFilter] = useState<string>('all')
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 12
+
+  const categories = [
+    { id: 'all', label: 'All Skills', icon: Terminal },
+    { id: 'AI & LLMs', label: 'AI & LLMs', icon: Bot },
+    { id: 'Search & Research', label: 'Search & Research', icon: Search },
+    { id: 'Finance', label: 'Finance', icon: TrendingUp }
   ]
 
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const response = await fetch('/skills.json')
+        const data = await response.json()
+        // Get all skills from the specified categories
+        const filteredSkills = data.skills.filter((skill: Skill) =>
+          ['AI & LLMs', 'Search & Research', 'Finance'].includes(skill.category)
+        )
+        setAllSkills(filteredSkills)
+        setFilteredSkills(filteredSkills)
+      } catch (error) {
+        console.error('Error fetching skills:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchSkills()
+  }, [])
+
+  useEffect(() => {
+    if (activeFilter === 'all') {
+      setFilteredSkills(allSkills)
+    } else {
+      setFilteredSkills(allSkills.filter(skill => skill.category === activeFilter))
+    }
+    setCurrentPage(1) // Reset to first page when filter changes
+  }, [activeFilter, allSkills])
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredSkills.length / itemsPerPage)
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  const currentSkills = filteredSkills.slice(startIndex, endIndex)
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case 'AI & LLMs':
+        return <Bot className="w-5 h-5" />
+      case 'Search & Research':
+        return <Search className="w-5 h-5" />
+      case 'Finance':
+        return <TrendingUp className="w-5 h-5" />
+      default:
+        return <Terminal className="w-5 h-5" />
+    }
+  }
+
+  if (loading) {
+    return (
+      <div className="p-8 h-full overflow-y-auto flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500"></div>
+      </div>
+    )
+  }
+
   return (
-    <div className="p-8 h-full overflow-y-auto">
-      <div className="flex items-center justify-between mb-8">
-        <div>
-          <h2 className="text-2xl font-black tracking-tight text-zinc-900">Agent Market</h2>
-          <p className="text-zinc-500 text-sm mt-1">Select and deploy AI models for your analysis workspace.</p>
-        </div>
-        <div className="px-3 py-1 bg-orange-50 text-orange-600 text-xs font-bold rounded-full border border-orange-100 uppercase tracking-wider">
-          Active Model: {selectedModel.split('/')[1] || selectedModel}
+    <div className="min-h-full overflow-y-auto animate-in fade-in duration-700 bg-gradient-to-br from-zinc-50 via-white to-zinc-50">
+      {/* Lumo Introduction Section */}
+      <div className="relative px-8 py-16 lg:px-16 lg:py-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Text Content */}
+            <div className="space-y-8 order-2 lg:order-1">
+              <div className="space-y-6">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-zinc-900 leading-tight">
+                  Meet <span className="text-orange-600 bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">LUMO</span>
+                </h1>
+                <div className="space-y-4 text-lg md:text-xl text-zinc-600 leading-relaxed">
+                  <p>
+                    When the age of financial AI began, it did not begin gently. New systems appeared almost overnight — faster, sharper, relentlessly optimized. They were engineered to predict before others could react, to trade before others could think, to capture opportunity with mechanical precision.
+                  </p>
+                  <p>
+                    But somewhere in that race, a different question was asked.
+                  </p>
+                  <p className="font-semibold text-zinc-800">
+                    What if intelligence didn't have to be aggressive to be powerful?
+                  </p>
+                  <p>
+                    LUMO was born from that question. He was not designed to conquer volatility or exploit weakness. He was shaped to understand the people behind the numbers — the uncertainty before a first investment, the tension of a falling chart, the quiet hope attached to long-term plans.
+                  </p>
+                  <p className="font-semibold text-zinc-800 italic">
+                    That is what makes him different. And that difference is his strength.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Robot Image */}
+            <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+              <div className="relative group">
+                <div className="w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-3xl bg-gradient-to-br from-zinc-200 via-zinc-100 to-zinc-200 p-2 shadow-2xl border border-zinc-300/50">
+                  <div className="w-full h-full rounded-3xl bg-white flex items-center justify-center overflow-hidden border border-zinc-100 shadow-inner">
+                    <img 
+                      src="/logo.jpeg" 
+                      alt="LUMO" 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                </div>
+                {/* Robotic glow effect */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-orange-400/20 via-zinc-400/10 to-purple-400/20 opacity-0 group-hover:opacity-100 blur-2xl -z-10 transition-opacity duration-700"></div>
+                {/* Circuit pattern overlay */}
+                <div className="absolute inset-2 rounded-2xl border border-zinc-200/30 opacity-50 pointer-events-none">
+                  <div className="absolute top-4 left-4 w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
+                  <div className="absolute top-4 right-4 w-2 h-2 bg-zinc-400 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                  <div className="absolute bottom-4 left-4 w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                  <div className="absolute bottom-4 right-4 w-2 h-2 bg-zinc-400 rounded-full animate-pulse" style={{animationDelay: '1.5s'}}></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {agents.map((agent) => (
-          <div key={agent.id} className={`group bg-white border rounded-2xl p-5 hover:shadow-lg transition-all duration-300 relative overflow-hidden ${selectedModel === agent.id ? 'border-zinc-900 ring-1 ring-zinc-900' : 'border-zinc-200 hover:border-zinc-300'}`}>
-
-            {selectedModel === agent.id && (
-              <div className="absolute top-0 right-0 p-2">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-              </div>
-            )}
-
-            <div className="flex items-start justify-between mb-4">
-              <div className="w-10 h-10 bg-zinc-50 rounded-xl flex items-center justify-center border border-zinc-100 group-hover:bg-zinc-900 group-hover:text-white transition-colors">
-                <VendorIcon provider={agent.provider} />
-              </div>
-              <span className="text-[10px] font-bold text-zinc-400 bg-zinc-50 px-2 py-1 rounded-md uppercase tracking-wider">
-                {agent.provider}
-              </span>
-            </div>
-
-            <h3 className="font-bold text-zinc-900 mb-1">{agent.name}</h3>
-            <p className="text-xs text-zinc-500 leading-relaxed mb-4 min-h-[40px]">{agent.desc}</p>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              {agent.tags.map(tag => (
-                <span key={tag} className="text-[10px] font-semibold text-zinc-500 bg-zinc-50 px-2 py-1 rounded-md border border-zinc-100">
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            <button
-              onClick={() => onModelSelect(agent.id)}
-              className={`w-full py-2.5 rounded-xl text-xs font-bold uppercase tracking-wide transition-all ${
-                selectedModel === agent.id
-                  ? 'bg-orange-50 text-orange-600 border border-orange-200 cursor-default'
-                  : 'bg-orange-500 text-white hover:bg-orange-600 shadow-md hover:shadow-lg hover:scale-[1.02]'
-              }`}
-            >
-              {selectedModel === agent.id ? 'Deployed' : 'Deploy Model'}
-            </button>
+      {/* Skills Section */}
+      <div className="px-8 pb-16 lg:px-16 lg:pb-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-black tracking-tight bg-gradient-to-r from-zinc-900 via-orange-600 to-zinc-900 bg-clip-text text-transparent mb-4">LUMO Skills</h2>
+            <p className="text-zinc-500 text-lg max-w-2xl mx-auto">Explore specialized AI skills engineered for intelligent analysis and decision-making.</p>
           </div>
-        ))}
+
+          {/* Filter Buttons */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {categories.map((category) => {
+              const Icon = category.icon
+              return (
+                <button
+                  key={category.id}
+                  onClick={() => setActiveFilter(category.id)}
+                  className={`flex items-center gap-3 px-6 py-3 rounded-2xl border transition-all duration-300 ${
+                    activeFilter === category.id
+                      ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white border-orange-500 shadow-lg shadow-orange-500/25'
+                      : 'bg-white border-zinc-200 text-zinc-600 hover:border-zinc-300 hover:shadow-md'
+                  }`}
+                >
+                  <Icon className="w-5 h-5" />
+                  <span className="font-semibold">{category.label}</span>
+                  {activeFilter === category.id && (
+                    <span className="text-xs bg-white/20 px-2 py-0.5 rounded-full">
+                      {filteredSkills.length}
+                    </span>
+                  )}
+                </button>
+              )
+            })}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {currentSkills.map((skill, index) => (
+              <Link
+                key={skill.id}
+                href={`/skills/${skill.slug}`}
+                className="group bg-white border border-zinc-200 rounded-2xl p-6 hover:shadow-xl hover:shadow-zinc-200/50 hover:border-zinc-300 transition-all duration-500 block hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-2"
+                style={{animationDelay: `${index * 50}ms`}}
+              >
+                <div className="flex items-start justify-between mb-5">
+                  <div className="w-12 h-12 bg-gradient-to-br from-zinc-50 to-zinc-100 rounded-xl flex items-center justify-center border border-zinc-200/50 group-hover:bg-orange-50 group-hover:border-orange-200 transition-all duration-300 shadow-sm">
+                    {getCategoryIcon(skill.category)}
+                  </div>
+                  <span className="text-[10px] font-bold text-zinc-400 bg-zinc-50 px-3 py-1 rounded-full uppercase tracking-wider border border-zinc-100">
+                    {skill.category}
+                  </span>
+                </div>
+
+                <h3 className="font-bold text-zinc-900 mb-2 group-hover:text-orange-600 transition-colors text-lg leading-tight">{skill.name}</h3>
+                <p className="text-sm text-zinc-500 leading-relaxed mb-5 min-h-[48px] line-clamp-3">{skill.description}</p>
+
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {(skill.tags || ['ai']).slice(0, 2).map(tag => (
+                    <span key={tag} className="text-[10px] font-semibold text-zinc-500 bg-zinc-50 px-2.5 py-1 rounded-md border border-zinc-100 hover:bg-zinc-100 transition-colors">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center justify-between text-xs text-zinc-400 pt-4 border-t border-zinc-100">
+                  <span className="font-medium">by {skill.author}</span>
+                  <div className="flex items-center gap-1">
+                    <Github className="w-4 h-4" />
+                    <span className="text-[10px] uppercase tracking-wider">Source</span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-2 mt-12">
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl border border-zinc-200 bg-white text-zinc-600 hover:bg-zinc-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                <ChevronLeft className="w-4 h-4" />
+                <span className="text-sm font-medium">Previous</span>
+              </button>
+
+              <div className="flex items-center gap-1">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => handlePageChange(page)}
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      currentPage === page
+                        ? 'bg-orange-500 text-white'
+                        : 'bg-white border border-zinc-200 text-zinc-600 hover:bg-zinc-50'
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+              </div>
+
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl border border-zinc-200 bg-white text-zinc-600 hover:bg-zinc-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                <span className="text-sm font-medium">Next</span>
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

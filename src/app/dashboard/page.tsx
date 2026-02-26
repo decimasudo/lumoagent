@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo } from 'react'
 import { createClient } from '@/lib/supabase'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { MarkdownRenderer } from '@/components/ui/MarkdownRenderer'
 import { Send, Bot, Briefcase, Activity, AlertTriangle, ChevronDown, Layout } from 'lucide-react'
 
@@ -86,6 +86,7 @@ export default function Dashboard() {
   const [watchlist, setWatchlist] = useState<any[]>([])
 
   const router = useRouter()
+  const searchParams = useSearchParams()
   const supabase = useMemo(() => {
     if (typeof window === 'undefined') return null
 
@@ -96,6 +97,13 @@ export default function Dashboard() {
     }
   }, [])
   const chatEndRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const menu = searchParams.get('menu')
+    if (menu) {
+      setActiveMenu(menu)
+    }
+  }, [searchParams])
 
   useEffect(() => {
     if (!supabase) return
@@ -245,14 +253,16 @@ export default function Dashboard() {
           )}
         </div>
 
-        <TickerSelector
-          ticker={ticker}
-          onTickerChange={setTicker}
-          onAnalyze={handleAnalyze}
-          loading={loading}
-          activeMenu={activeMenu}
-          onMenuChange={setActiveMenu}
-        />
+        {activeMenu === 'dashboard' && (
+          <TickerSelector
+            ticker={ticker}
+            onTickerChange={setTicker}
+            onAnalyze={handleAnalyze}
+            loading={loading}
+            activeMenu={activeMenu}
+            onMenuChange={setActiveMenu}
+          />
+        )}
       </main>
     </div>
   )
