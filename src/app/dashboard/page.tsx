@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { createClient } from '@/lib/supabase'
 import { useRouter } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
@@ -81,10 +81,20 @@ export default function Dashboard() {
   const [watchlist, setWatchlist] = useState<any[]>([])
 
   const router = useRouter()
-  const supabase = createClient()
+  const supabase = useMemo(() => {
+    if (typeof window === 'undefined') return null
+
+    try {
+      return createClient()
+    } catch {
+      return null
+    }
+  }, [])
   const chatEndRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (!supabase) return
+
     const initData = async () => {
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) {
@@ -184,7 +194,15 @@ export default function Dashboard() {
           await fetch(`/api/watchlist?id=${id}`, { method: 'DELETE' }); 
           fetchWatchlist() 
         }}
-        onSignOut={async () => { await supabase.auth.signOut(); router.push('/') }} 
+        onSignOut={async () => {
+          if (!supabase) {
+            router.push('/')
+            return
+          }
+
+          await supabase.auth.signOut()
+          router.push('/')
+        }} 
         isAnalyzing={loading}
       />
 

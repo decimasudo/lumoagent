@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, FormEvent } from 'react'
+import { useMemo, useState, FormEvent } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
@@ -8,7 +8,15 @@ import { BarChart3, Mail, Lock, Loader2, AlertCircle } from 'lucide-react'
 
 export default function SignIn() {
   const router = useRouter()
-  const supabase = createClient()
+  const supabase = useMemo(() => {
+    if (typeof window === 'undefined') return null
+
+    try {
+      return createClient()
+    } catch {
+      return null
+    }
+  }, [])
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -19,6 +27,12 @@ export default function SignIn() {
     e.preventDefault()
     setLoading(true)
     setError('')
+
+    if (!supabase) {
+      setError('Authentication is not configured. Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in Vercel Environment Variables.')
+      setLoading(false)
+      return
+    }
 
     try {
       const { error } = await supabase.auth.signInWithPassword({
