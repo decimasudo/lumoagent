@@ -16,6 +16,7 @@ interface SidebarProps {
   watchlist: any[]
   onSelectWatchlist: (ticker: string) => void
   onRemoveWatchlist: (id: string) => void
+  isAnalyzing?: boolean // Added prop for loading state
 }
 
 export function Sidebar({ 
@@ -27,7 +28,8 @@ export function Sidebar({
   onSelectHistory,
   watchlist,
   onSelectWatchlist,
-  onRemoveWatchlist
+  onRemoveWatchlist,
+  isAnalyzing = false // Default to false
 }: SidebarProps) {
   
   const menuItems = [
@@ -35,6 +37,7 @@ export function Sidebar({
     { id: 'agents', label: 'Agent Market', icon: Bot },
     { id: 'settings', label: 'Settings', icon: Settings },
   ]
+
 
   return (
     <aside className="w-64 bg-white border-r border-zinc-200 flex flex-col justify-between hidden md:flex">
@@ -53,14 +56,25 @@ export function Sidebar({
             <button
               key={item.id}
               onClick={() => setActiveMenu(item.id)}
-              className={`w-full flex items-center space-x-3 px-3 py-2.5 rounded-md transition-all ${
+              className={`group w-full flex items-center space-x-3 px-3 py-2.5 rounded-md transition-all ${
                 activeMenu === item.id 
                 ? 'bg-zinc-100 text-zinc-900 font-semibold shadow-sm' 
                 : 'text-zinc-500 hover:bg-zinc-50 hover:text-zinc-900'
               }`}
             >
               <item.icon className="w-5 h-5" />
-              <span>{item.label}</span>
+              <span className="flex-1 text-left flex items-center justify-between">
+                {item.label}
+                {item.id === 'dashboard' && isAnalyzing && (
+                  <span className="flex items-center h-full ml-2">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                   <span className="text-[10px] ml-2 font-normal text-muted-foreground hidden group-hover:block transition-all opacity-0 group-hover:opacity-100">Analyzing...</span>
+                  </span>
+                )}
+              </span>
             </button>
           ))}
         </nav>

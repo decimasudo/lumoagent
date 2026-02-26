@@ -1,6 +1,6 @@
 // src/lib/openrouter.ts
 
-export async function analyzeStock(ticker: string, stockData: any, apiKey: string, agentType: string) {
+export async function analyzeStock(ticker: string, stockData: any, apiKey: string, agentType: string, selectedModel: string = "anthropic/claude-3-haiku") {
   
   let systemPrompt = "";
   
@@ -82,7 +82,7 @@ export async function analyzeStock(ticker: string, stockData: any, apiKey: strin
         "X-Title": "QuantAI Terminal"
       },
       body: JSON.stringify({
-        model: "anthropic/claude-3-haiku", 
+        model: selectedModel, 
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: userPrompt }

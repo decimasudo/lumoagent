@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     // Menangkap tipe agen yang dikirim dari UI, default ke fundamental
-    const { ticker, agentType = 'fundamental' } = body
+    const { ticker, agentType = 'fundamental', model = 'google/gemini-2.0-flash-001' } = body
 
     if (!ticker || typeof ticker !== 'string') {
       return NextResponse.json({ success: false, error: 'Ticker is required' }, { status: 400 })
@@ -35,8 +35,8 @@ export async function POST(request: NextRequest) {
     let aiAnalysis = ''
 
     if (openRouterKey) {
-      console.log(`[API] Calling analyzeStock...`);
-      aiAnalysis = await analyzeStock(tickerSymbol, stockData, openRouterKey, agentType)
+      console.log(`[API] Calling analyzeStock with model ${model}...`);
+      aiAnalysis = await analyzeStock(tickerSymbol, stockData, openRouterKey, agentType, model)
       console.log(`[API] AI analysis completed`);
     } else {
       return NextResponse.json({ success: false, error: 'OpenRouter API Key is missing.' }, { status: 500 })
