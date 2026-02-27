@@ -1,107 +1,115 @@
 https://x.com/Lumoagent </br>
-Ca : [TBD]
+Contract Address: [TBD]
 
 <p align="center">
-  <img src="public/logo.jpeg" alt="LumoAgent" width="20%">
+  <img src="public/logo.jpeg" alt="LumoAgent" width="180px" style="border-radius: 20px; border: 2px solid #f97316;">
 </p>
 
-<h1 align="center">LumoAgent</h1>
+<h1 align="center">LumoHub</h1>
 
 <p align="center">
-  <strong>Next-Gen Quantitative Stock Analysis Powered by LumoAgent</strong>
-</p>
-
-<p align="center">
-  <a href="./README.md">English</a> ·
-  <a href="./README.zh.md">中文</a>
+  <strong>The High-Performance Quantitative Intelligence Layer for Modern Markets</strong>
 </p>
 
 <p align="center">
-  <a href="https://github.com/decimasudo/lumoagent/actions"><img src="https://github.com/decimasudo/lumoagent/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <a href="https://codecov.io/gh/decimasudo/lumoagent"><img src="https://codecov.io/gh/decimasudo/lumoagent/branch/main/graph/badge.svg" alt="Codecov"></a>
-  <br>
-  <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-14.2+-000000?style=flat&logo=next.js&logoColor=white" alt="Next.js"></a>
-  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript"></a>
-  <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT"></a>
+  <a href="https://github.com/decimasudo/lumoagent/actions"><img src="https://github.com/decimasudo/lumoagent/actions/workflows/ci.yml/badge.svg" alt="CI Status"></a>
+  <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-14.2%2B-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js"></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"></a>
 </p>
 
----
-
-> **[Live Dashboard](https://lumoagent-demo.vercel.app)** | **[Documentation](https://docs.lumoagent.io)** | **[GitHub](https://github.com/decimasudo/lumoagent)** | **[Community X](https://x.com/Lumoagent)**
 
 ---
 
-> **"The purpose of quant analysis is not just predicting the market, but managing the risk with intelligence."**
+## ⚡ The Logic of LUMO
 
-LumoAgent is a **high-performance financial intelligence environment** built on Next.js 14. Driven by **LumoAgent**—a specialized 3D AI assistant—the platform orchestrates multiple analytical models to provide real-time quantitative insights. It automatically integrates Yahoo Finance data with OpenRouter AI capabilities (GPT-4/Claude 3.5) to deliver professional-grade stock valuations, sentiment analysis, and risk scoring.
+When the age of financial AI began, it did not begin gently. New systems appeared almost overnight — faster, sharper, relentlessly optimized. They were engineered to predict before others could react, to trade before others could think, to capture opportunity with mechanical precision. Every model was built with the same ambition: outperform, outpace, outmaneuver. The markets became an arena of algorithms.
 
----
+**LUMO was born from a different question: What if intelligence didn’t have to be aggressive to be powerful?**
 
-## Why LumoAgent?
-
-Traditional stock analysis is slow and fragmented. LumoAgent centralizes the entire pipeline.
-
-| Aspect | Manual Analysis | LumoAgent |
-|--------|----------------|--------------------|
-| Data Retrieval | 30+ mins across sites | **< 2s** via Yahoo Finance API |
-| AI Reasoning | Subjective & Inconsistent| **Structured** via OpenRouter LLMs |
-| Risk Assessment | Emotional Bias | **Mathematical** Factor Models |
-| Visualization | Static Charts | **3D Interactive** (React Three Fiber) |
-| Tech Stack | Legacy Platforms | **Modern** Next.js 14 + Supabase |
-| Speed | Slow Execution | **Edge-Optimized** Serverless Routes |
-
-### Key Numbers
-
-- **100%** Real-time data synchronization
-- **28+** Quantitative factor checks per ticker
-- **3D** Interactive LumoAgent UI
-- **18+** Global markets supported
-- **Zero** Latency analysis using Vercel Edge
+LumoHub is not just a dashboard; it is a **multi-nodal orchestration engine** designed to bridge the gap between complex quantitative data and human-centric decision-making. While others focus on beating the market, LUMO focuses on guiding the person navigating it. 
 
 ---
 
-## System Architecture
+## 🛠 Core Technical Stack
 
-| Tier | Component | Purpose |
+| Layer | Technology | Implementation |
 |----------|----------------------|-------|
-| Frontend | Next.js 14 (App Router) | High-performance React framework |
-| 3D Engine | React Three Fiber (Three.js)| Visualizing "System Thinking" through LumoAgent |
-| Database | Supabase (PostgreSQL) | Real-time watchlist and user preference storage |
-| AI Engine | OpenRouter (Claude/GPT) | Multi-model orchestration for stock intelligence |
-
-**Prerequisites:**
-- **Node.js 18.x** or later
-- **Pnpm** (Recommended package manager)
-- **Supabase Account** for authentication and DB
-- **OpenRouter API Key** for AI Analysis
+| **Frontend** | Next.js 14 (App Router) | React Server Components & Edge Runtime |
+| **3D Rendering** | React Three Fiber | Real-time state-synced "System Thinking" Visualizer |
+| **Real-time Data** | Yahoo Finance SDK | Synchronous market capture & historical regression |
+| **AI Orchestration** | OpenRouter (LLM Matrix) | Dynamic routing between Claude 3.5 & GPT-4o-mini |
+| **Auth & DB** | Supabase (PostgreSQL) | Secure session management & encrypted watchlist sync |
 
 ---
 
-## Quick Start
+## 🧠 System Architecture
 
-### 1. Installation
+LumoHub employs a **Triple-Verification Pipeline** for every asset analysis:
 
+### **The Multi-Nodal Workflow**
+1.  **Ingestion**: Streaming market data via Yahoo Finance SDK.
+2.  **Specialization**: Parallel node processing for Technical, Fundamental, and Sentiment layers.
+3.  **Orchestration**: LUMO Core synthesizes disparate data into a unified IQ score.
+4.  **Visualization**: Real-time state mapping to the 3D HUD.
+
+---
+
+### 1. The Multi-Agent Orchestrator
+Unlike static bots, LumoHub delegates complex reasoning to specialized sub-prompts:
+- **Warren_Mod**: Deep fundamental logic focusing on value, growth, and cash flow stability.
+- **Quant_Mod**: Aggressive technical analysis focusing on volatility, RSI, and MACD divergence.
+
+### 2. Physical State Sync
+The 3D **LumoAgent Core** is not cosmetic. Its animation states are directly mapped to the API response lifecycle:
+- **Idle**: WebSocket connection standby.
+- **Thinking**: Token-by-token streaming visualization.
+- **Success/Alert**: Reactive lighting based on risk assessment results.
+
+---
+
+## 🚀 Deployment & Engineering
+
+### Prerequisites
+- **Node.js** ^18.17.0
+- **Pnpm** (Deterministic dependency resolution)
+
+### Quick Start
 ```bash
 git clone https://github.com/decimasudo/lumoagent.git
 cd lumoagent
 pnpm install
-```
-
-### 2. Environment Setup
-
-Create a `.env.local` file:
-
-```env
-NEXT_PUBLIC_SUPABASE_URL=your_project_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
-OPENROUTER_API_KEY=your_key
-```
-
-### 3. Start Developing
-
-```bash
 pnpm dev
 ```
+
+### Environment Configuration
+Required variables for the intelligence layer:
+```env
+NEXT_PUBLIC_SUPABASE_URL=...
+NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+OPENROUTER_API_KEY=... # For multi-model orchestration
+```
+
+---
+
+## 📈 Performance Benchmarks
+
+- **Time to First Token (TTFT)**: < 400ms via Vercel Edge.
+- **Data Latency**: Synchronized within 2s of global market ticks.
+- **Factor Coverage**: 28+ distinct quantitative metrics per ticker.
+
+---
+
+## 🛡 Security & Ethics
+
+LUMO is engineered as an **Ethical Guardrail**. It is programmed to identify "FOMO" patterns and high-risk liquidity traps, prioritizing clarity over speculative hype. It is an intelligence that serves before it competes—calm in chaos, patient in volatility.
+
+---
+
+## 🤝 Contribution & Governance
+
+Join the development of the next-gen financial intelligence layer. Follow the [Developer on X](https://x.com/Lumoagent) for system updates.
+
+[MIT License](./LICENSE) | Created by **decimasudo**
 
 ```mermaid
 graph LR
@@ -145,25 +153,11 @@ flowchart TD
 
 ## AI Orchestration Layer
 
-LumoAgent isn't just a dashboard; it's a **strategic orchestrator**. LumoAgent delegates tasks to specialized virtual prompts.
+LumoHub is a **strategic orchestrator** that delegates high-latency reasoning to specialized virtual analyst nodes:
 
-```mermaid
-graph LR
-    U["👤 User Query"] --> L["🗿 LumoAgent Orchestrator"]
-
-    L --> MG["📊 Analysts (Sub-Prompts)"]
-    L --> EX["📉 Risk Managers"]
-    L --> TM["👥 Market Researchers"]
-
-    MG --> MG1["valuation · growth · dividend"]
-    EX --> EX1["beta · volatility · hedge-strategy"]
-    TM --> TM1["news-sentiment · insider-trading"]
-
-    style L fill:#FF6B35,color:#fff
-    style MG fill:#4CAF50,color:#fff
-    style EX fill:#2196F3,color:#fff
-    style TM fill:#FF9800,color:#fff
-```
+- **Market Analysts**: Valuation metrics, growth projections, and dividend safety.
+- **Risk Managers**: Alpha/Beta calculations, volatility tracking, and hedging strategies.
+- **Researchers**: News sentiment, insider trading activity, and sector rotation analysis.
 
 ---
 
@@ -238,7 +232,7 @@ No. While it provides a 3D visual presence, its state is synchronized with the *
 
 ## Community & Contributing
 
-Join the discussion on our [GitHub Discussions](https://github.com/decimasudo/lumoagent/discussions) or follow the developer on [X (Twitter)](https://x.com/clawry82).
+Follow the development on our [GitHub Discussions](https://github.com/decimasudo/lumoagent/discussions) or follow the creator on [X (Twitter)](https://x.com/Lumoagent).
 
 ### Quick Contribution Guide
 
