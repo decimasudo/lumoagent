@@ -143,8 +143,8 @@ export async function analyzeStock(ticker: string, stockData: any, apiKey: strin
       headers: {
         "Authorization": `Bearer ${cleanApiKey}`,
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://lumoagent.vercel.app",
-        "X-Title": "LumoAgent Terminal"
+        "HTTP-Referer": "https://jerril.vercel.app",
+        "X-Title": "Jerril Terminal"
       },
       body: JSON.stringify({
         model: selectedModel,

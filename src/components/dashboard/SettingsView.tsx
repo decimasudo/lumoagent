@@ -49,17 +49,17 @@ export function SettingsView() {
           <div className="space-y-3">
             <div className="flex items-center justify-between p-3 bg-zinc-50 rounded-xl border border-zinc-100">
               <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" />
                 <span className="text-sm font-bold text-zinc-700">Yahoo Finance API</span>
               </div>
-              <span className="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded">CONNECTED</span>
+              <span className="text-xs font-bold text-cyan-600 bg-cyan-50 px-2 py-1 rounded">CONNECTED</span>
             </div>
             <div className="flex items-center justify-between p-3 bg-zinc-50 rounded-xl border border-zinc-100">
               <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" />
                 <span className="text-sm font-bold text-zinc-700">OpenRouter AI</span>
               </div>
-              <span className="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded">OPERATIONAL</span>
+              <span className="text-xs font-bold text-cyan-600 bg-cyan-50 px-2 py-1 rounded">OPERATIONAL</span>
             </div>
           </div>
         </div>

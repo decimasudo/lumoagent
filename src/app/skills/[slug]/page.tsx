@@ -61,7 +61,7 @@ export default function SkillDetailPage() {
   if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-cyan-500"></div>
       </div>
     )
   }
@@ -71,7 +71,7 @@ export default function SkillDetailPage() {
       <div className="min-h-[60vh] flex flex-col items-center justify-center text-center space-y-4">
         <h2 className="text-2xl font-bold text-zinc-900">Skill not found</h2>
         <p className="text-zinc-500">The skill you are looking for doesn't exist or has been removed.</p>
-        <Link href="/dashboard?menu=agents" className="text-orange-600 hover:underline">Return to Lumo</Link>
+        <Link href="/dashboard?menu=agents" className="text-cyan-600 hover:underline">Return to Jerril</Link>
       </div>
     )
   }
@@ -93,14 +93,14 @@ export default function SkillDetailPage() {
       {/* Breadcrumb / Back */}
       <div className="flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-700 transition-colors">
         <ArrowLeft className="w-4 h-4" />
-        <Link href="/dashboard?menu=agents" className="font-medium">Back to LUMO Hub</Link>
+        <Link href="/dashboard?menu=agents" className="font-medium">Back to Jerril Hub</Link>
       </div>
 
       {/* Header Section */}
       <div className="flex flex-col md:flex-row gap-8 md:items-start justify-between bg-gradient-to-r from-zinc-50 to-white p-8 rounded-3xl border border-zinc-200/50 shadow-sm">
         <div className="space-y-6 flex-1">
           <div className="flex items-center gap-4">
-            <div className="p-4 rounded-2xl bg-gradient-to-br from-zinc-100 to-zinc-200 border border-zinc-300/50 text-orange-600 shadow-sm">
+            <div className="p-4 rounded-2xl bg-gradient-to-br from-zinc-100 to-zinc-200 border border-zinc-300/50 text-cyan-600 shadow-sm">
               <Terminal className="w-10 h-10" />
             </div>
             <div>
@@ -121,7 +121,7 @@ export default function SkillDetailPage() {
           {/* Test Drive Button */}
           <button
             onClick={() => setShowTestDrive(true)}
-            className="flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white transition-all duration-300 shadow-lg shadow-orange-500/30 hover:shadow-xl hover:-translate-y-0.5 font-semibold"
+            className="flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white transition-all duration-300 shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:-translate-y-0.5 font-semibold"
           >
             <PlayCircle className="w-5 h-5" />
             <span>Test Drive</span>
@@ -147,7 +147,7 @@ export default function SkillDetailPage() {
           </div>
           <button
             onClick={copyCommand}
-            className="flex items-center gap-2 text-sm font-semibold text-zinc-600 hover:text-orange-600 transition-colors px-3 py-1 rounded-lg hover:bg-zinc-100"
+            className="flex items-center gap-2 text-sm font-semibold text-zinc-600 hover:text-cyan-600 transition-colors px-3 py-1 rounded-lg hover:bg-zinc-100"
           >
             {copied ? (
               <>
@@ -161,9 +161,9 @@ export default function SkillDetailPage() {
           </button>
         </div>
         <div className="p-8 font-mono text-base md:text-lg relative group">
-          <div className="absolute inset-0 bg-orange-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-b-2xl" />
+          <div className="absolute inset-0 bg-cyan-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-b-2xl" />
           <div className="flex items-center gap-4 text-zinc-900 relative z-10">
-            <span className="text-orange-600 select-none font-bold">$</span>
+            <span className="text-cyan-600 select-none font-bold">$</span>
             <span className="break-all font-medium">{skill.install_command}</span>
           </div>
         </div>
@@ -186,8 +186,8 @@ export default function SkillDetailPage() {
              <h3 className="text-2xl font-black text-zinc-900 mb-6">Capabilities</h3>
              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                <div className="flex items-start gap-4 text-zinc-600">
-                 <div className="p-2 rounded-lg bg-orange-50 border border-orange-200 mt-1">
-                   <Zap className="w-5 h-5 text-orange-600" />
+                 <div className="p-2 rounded-lg bg-cyan-50 border border-cyan-200 mt-1">
+                   <Zap className="w-5 h-5 text-cyan-600" />
                  </div>
                  <div>
                    <h4 className="font-semibold text-zinc-900 mb-1">Optimized Performance</h4>

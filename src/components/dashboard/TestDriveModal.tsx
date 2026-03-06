@@ -212,15 +212,15 @@ export function TestDriveModal({ skill, onClose }: TestDriveModalProps) {
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-zinc-900 to-zinc-800 text-white flex-shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-orange-500/20 border border-orange-500/30 flex items-center justify-center">
-              <Terminal className="w-5 h-5 text-orange-400" />
+            <div className="w-9 h-9 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center">
+              <Terminal className="w-5 h-5 text-cyan-400" />
             </div>
             <div>
               <h2 className="font-bold text-sm leading-tight">Test Drive</h2>
               <p className="text-xs text-zinc-400 font-mono">{skill.name}</p>
             </div>
-            <span className="ml-2 px-2.5 py-1 rounded-full bg-orange-500/20 border border-orange-500/30 text-orange-400 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse inline-block" />
+            <span className="ml-2 px-2.5 py-1 rounded-full bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse inline-block" />
               Sandbox
             </span>
           </div>
@@ -250,13 +250,13 @@ export function TestDriveModal({ skill, onClose }: TestDriveModalProps) {
           {!started && (
             <div className="space-y-5">
               <div className="flex gap-3">
-                <div className="w-8 h-8 rounded-xl bg-orange-100 border border-orange-200 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Bot className="w-4 h-4 text-orange-600" />
+                <div className="w-8 h-8 rounded-xl bg-cyan-100 border border-cyan-200 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Bot className="w-4 h-4 text-cyan-600" />
                 </div>
                 <div className="bg-white border border-zinc-200 rounded-2xl rounded-tl-sm p-4 shadow-sm max-w-[85%]">
                   <p className="text-sm text-zinc-700 leading-relaxed">
                     <span className="font-bold text-zinc-900">Skill active.</span> You are now in the sandbox for{' '}
-                    <span className="font-semibold text-orange-600">{skill.name}</span>.
+                    <span className="font-semibold text-cyan-600">{skill.name}</span>.
                     Ask me anything related to this skill, or pick a suggested question below.
                   </p>
                 </div>
@@ -273,9 +273,9 @@ export function TestDriveModal({ skill, onClose }: TestDriveModalProps) {
                     <button
                       key={i}
                       onClick={() => sendMessage(q)}
-                      className="w-full text-left px-4 py-3 rounded-xl border border-zinc-200 bg-white hover:border-orange-300 hover:bg-orange-50 text-sm text-zinc-600 hover:text-zinc-900 transition-all duration-200 group shadow-sm hover:shadow-md"
+                      className="w-full text-left px-4 py-3 rounded-xl border border-zinc-200 bg-white hover:border-cyan-300 hover:bg-cyan-50 text-sm text-zinc-600 hover:text-zinc-900 transition-all duration-200 group shadow-sm hover:shadow-md"
                     >
-                      <span className="text-orange-500 font-bold mr-2 group-hover:text-orange-600">→</span>
+                      <span className="text-cyan-500 font-bold mr-2 group-hover:text-cyan-600">→</span>
                       {q}
                     </button>
                   ))}
@@ -288,8 +288,8 @@ export function TestDriveModal({ skill, onClose }: TestDriveModalProps) {
           {messages.map((msg, i) => (
             <div key={i} className={`flex gap-3 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               {msg.role === 'assistant' && (
-                <div className="w-8 h-8 rounded-xl bg-orange-100 border border-orange-200 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Bot className="w-4 h-4 text-orange-600" />
+                <div className="w-8 h-8 rounded-xl bg-cyan-100 border border-cyan-200 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Bot className="w-4 h-4 text-cyan-600" />
                 </div>
               )}
               <div className={`max-w-[80%] rounded-2xl px-4 py-3 shadow-sm ${
@@ -316,8 +316,8 @@ export function TestDriveModal({ skill, onClose }: TestDriveModalProps) {
           {/* Loading indicator */}
           {loading && (
             <div className="flex gap-3">
-              <div className="w-8 h-8 rounded-xl bg-orange-100 border border-orange-200 flex items-center justify-center flex-shrink-0">
-                <Bot className="w-4 h-4 text-orange-600" />
+              <div className="w-8 h-8 rounded-xl bg-cyan-100 border border-cyan-200 flex items-center justify-center flex-shrink-0">
+                <Bot className="w-4 h-4 text-cyan-600" />
               </div>
               <div className="bg-white border border-zinc-200 rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm">
                 <div className="flex items-center gap-2 text-zinc-400">
@@ -343,13 +343,13 @@ export function TestDriveModal({ skill, onClose }: TestDriveModalProps) {
                 placeholder={`Ask ${skill.name} anything...`}
                 disabled={loading}
                 autoFocus
-                className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-400 transition-all disabled:opacity-60"
+                className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-400 transition-all disabled:opacity-60"
               />
             </div>
             <button
               type="submit"
               disabled={!input.trim() || loading}
-              className="w-11 h-11 flex items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 text-white shadow-lg shadow-orange-500/25 hover:from-orange-600 hover:to-orange-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex-shrink-0"
+              className="w-11 h-11 flex items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-600 text-white shadow-lg shadow-cyan-500/25 hover:from-cyan-600 hover:to-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex-shrink-0"
             >
               {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
             </button>

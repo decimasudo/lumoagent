@@ -35,4 +35,4 @@ build
 .env.test.local
 .env.production.local
 
-public/skills
+public/skills/

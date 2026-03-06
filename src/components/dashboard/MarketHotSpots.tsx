@@ -11,7 +11,7 @@ const HOT_TOPICS = [
 export function MarketHotSpots({ onSelect }: { onSelect: (text: string) => void }) {
   return (
     <div className="space-y-4 mt-6">
-      <div className="flex items-center gap-2 text-orange-500 animate-pulse">
+      <div className="flex items-center gap-2 text-cyan-500 animate-pulse">
         <Flame className="w-5 h-5" />
         <h3 className="font-semibold text-sm uppercase tracking-wider">Market Hot Spots</h3>
       </div>
@@ -20,10 +20,10 @@ export function MarketHotSpots({ onSelect }: { onSelect: (text: string) => void 
           <Button
             key={i}
             variant="outline"
-            className="h-auto py-4 justify-start text-left hover:border-orange-500/50 hover:bg-orange-500/5 transition-all group"
+            className="h-auto py-4 justify-start text-left hover:border-cyan-500/50 hover:bg-cyan-500/5 transition-all group"
             onClick={() => onSelect(topic.text)}
           >
-            <topic.icon className="w-5 h-5 mr-3 text-muted-foreground group-hover:text-orange-500" />
+            <topic.icon className="w-5 h-5 mr-3 text-muted-foreground group-hover:text-cyan-500" />
             <span className="text-sm font-medium">{topic.text}</span>
           </Button>
         ))}

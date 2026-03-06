@@ -13,7 +13,9 @@ export default function FederatedQuantumAggregator() {
     const [epoch, setEpoch] = useState(0);
     const [metrics, setMetrics] = useState<ModelMEtrics>({
         loss: 0,
-        accuracy: 
+        accuracy: 0,
+        activeNodes: 0,
+        latencyMs: 0
     })
     
     return (

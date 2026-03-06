@@ -14,7 +14,7 @@ export function DashboardHeader({ agentType, onAgentTypeChange, stockData, execu
     <header className="h-16 flex items-center px-8 border-b border-zinc-50 sticky top-0 bg-white/80 backdrop-blur-md z-20">
       <div className="flex items-center space-x-6">
         <div className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(255,140,0,0.5)]" />
+          <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(6,182,212,0.5)]" />
           <h1 className="text-[10px] font-mono font-black uppercase tracking-widest text-zinc-400">System.v1.5.0</h1>
         </div>
         

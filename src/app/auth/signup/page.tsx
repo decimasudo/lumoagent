@@ -11,9 +11,9 @@ import dynamic from 'next/dynamic'
 const RobotCanvas = dynamic(() => import('@/components/Robot3D'), {
   ssr: false,
   loading: () => (
-    <div className="flex flex-col items-center justify-center w-full h-full text-[#FF8C00]">
+    <div className="flex flex-col items-center justify-center w-full h-full text-[#00E5FF]">
       <Loader2 className="w-8 h-8 animate-spin mb-4" />
-      <span className="text-sm font-medium text-slate-600">Loading LumoAgent 3D...</span>
+      <span className="text-sm font-medium text-slate-600">Loading Jerril 3D...</span>
     </div>
   ),
 })
@@ -130,11 +130,11 @@ export default function SignUp() {
             <h1 className="text-3xl font-bold text-slate-900 mb-4 tracking-tight">Account Created!</h1>
             <p className="text-slate-600 mb-8 text-lg">
               Your account for <span className="font-semibold text-slate-900">{email}</span> is ready.
-              Sign in now to start using LumoAgent.
+              Sign in now to start using Jerril.
             </p>
             <Link
               href="/auth/signin"
-              className="w-full inline-block bg-[#FF8C00] hover:bg-[#B24D00] text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-xl shadow-orange-500/20 transition-all hover:-translate-y-1 active:scale-[0.98]"
+              className="w-full inline-block bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-xl shadow-cyan-500/20 transition-all hover:-translate-y-1 active:scale-[0.98]"
             >
               Sign In Now
             </Link>
@@ -151,9 +151,9 @@ export default function SignUp() {
       <header className="h-20 flex-shrink-0 bg-white flex items-center px-6 justify-between border-b border-slate-100 relative z-20">
         <div className="flex items-center gap-3">
           <Link href="/" className="inline-flex items-center space-x-2">
-            <img src="/logo.jpeg" alt="LumoAgent Logo" className="w-10 h-10 rounded-xl" />
+            <img src="/logo.jpeg" alt="Jerril Logo" className="w-10 h-10 rounded-xl" />
             <span className="text-xl font-bold tracking-tight text-slate-900">
-              Lumo<span className="text-[#FF8C00] font-normal">Agent</span>
+              Jerril
             </span>
           </Link>
         </div>
@@ -171,7 +171,7 @@ export default function SignUp() {
               {featureTexts[textIndex]}
             </h2>
             <p className="text-slate-600 text-base max-w-lg">
-              Join LumoAgent today. Unlock powerful portfolio tracking, risk assessment, and intelligence for your investments.
+              Join Jerril today. Unlock powerful portfolio tracking, risk assessment, and intelligence for your investments.
             </p>
           </div>
 
@@ -213,7 +213,7 @@ export default function SignUp() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="you@example.com"
                       required
-                      className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF8C00]/20 focus:border-[#FF8C00] focus:bg-white transition-all text-slate-900 placeholder-slate-400"
+                      className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-500 focus:bg-white transition-all text-slate-900 placeholder-slate-400"
                     />
                   </div>
                 </div>
@@ -232,7 +232,7 @@ export default function SignUp() {
                       placeholder="••••••••"
                       required
                       minLength={6}
-                      className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF8C00]/20 focus:border-[#FF8C00] focus:bg-white transition-all text-slate-900 placeholder-slate-400"
+                      className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-500 focus:bg-white transition-all text-slate-900 placeholder-slate-400"
                     />
                   </div>
                 </div>
@@ -250,7 +250,7 @@ export default function SignUp() {
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       placeholder="••••••••"
                       required
-                      className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#FF8C00]/20 focus:border-[#FF8C00] focus:bg-white transition-all text-slate-900 placeholder-slate-400"
+                      className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-500 focus:bg-white transition-all text-slate-900 placeholder-slate-400"
                     />
                   </div>
                 </div>
@@ -258,7 +258,7 @@ export default function SignUp() {
                 <button
                   type="submit"
                   disabled={loading || redirecting}
-                  className="w-full bg-gradient-to-r from-[#FF8C00] to-[#E67E00] hover:from-[#E67E00] hover:to-[#CC7000] disabled:opacity-70 disabled:cursor-not-allowed text-white py-3.5 rounded-xl font-semibold shadow-lg shadow-orange-500/20 transition-all flex items-center justify-center mt-6"
+                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 disabled:opacity-70 disabled:cursor-not-allowed text-white py-3.5 rounded-xl font-semibold shadow-lg shadow-cyan-500/20 transition-all flex items-center justify-center mt-6"
                 >
                   {redirecting ? (
                     <>
@@ -279,7 +279,7 @@ export default function SignUp() {
               <div className="mt-8 text-center">
                 <p className="text-slate-600 text-sm">
                   Already have an account?{' '}
-                  <Link href="/auth/signin" className="text-[#FF8C00] hover:text-[#B24D00] font-semibold transition-colors">
+                  <Link href="/auth/signin" className="text-cyan-600 hover:text-cyan-700 font-semibold transition-colors">
                     Sign in here
                   </Link>
                 </p>

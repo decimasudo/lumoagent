@@ -16,6 +16,21 @@ const config = {
         ring: "var(--ring)",
         background: "var(--background)",
         foreground: "var(--foreground)",
+        void: {
+          DEFAULT: "#030712",
+          deep: "#020617",
+          slate: "#0f172a",
+        },
+        stellar: {
+          DEFAULT: "#22d3ee",
+          glow: "#06b6d4",
+          soft: "#ecfeff",
+        },
+        nebula: {
+          DEFAULT: "#f59e0b",
+          pulse: "#fbbf24",
+          deep: "#78350f",
+        },
         primary: {
           DEFAULT: "var(--primary)",
           foreground: "var(--primary-foreground)",

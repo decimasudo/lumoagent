@@ -157,7 +157,7 @@ export async function POST(request: NextRequest) {
 
     // Build a system prompt that simulates the skill being active
     const safeSkillName = skillName.replace(/[^a-zA-Z0-9\s\-_]/g, '').trim() || 'Unknown Skill'
-    const systemPrompt = `You are simulating the "${safeSkillName}" skill — a specialized AI agent in the LumoAgent financial intelligence platform.
+    const systemPrompt = `You are simulating the "${safeSkillName}" skill — a specialized AI agent in the Jerril financial intelligence platform.
 
 Skill Description: ${skillDescription}
 Skill Category: ${skillCategory}
@@ -176,8 +176,8 @@ You are running inside a sandbox "Test Drive" environment. The user is testing w
       headers: {
         'Authorization': `Bearer ${cleanApiKey}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://lumoagent.vercel.app',
-        'X-Title': 'LumoAgent Skill Test Drive'
+        'HTTP-Referer': 'https://jerril.vercel.app',
+        'X-Title': 'Jerril Skill Test Drive'
       },
       body: JSON.stringify({
         model: 'google/gemini-2.0-flash-001',
