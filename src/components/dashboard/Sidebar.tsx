@@ -68,8 +68,12 @@ export function Sidebar({
       <div className="p-6 border-b border-white/5 flex items-center gap-4">
         <div className="relative flex-none">
           <div className="absolute inset-0 bg-stellar/30 blur-md rounded-full animate-pulse" />
-          <div className="relative bg-void border border-stellar/30 p-2 rounded-xl shadow-[0_0_15px_rgba(34,211,238,0.2)]">
-            <Bot className="w-6 h-6 text-stellar" />
+          <div className="relative bg-void border border-stellar/30 p-1.5 rounded-xl shadow-[0_0_15px_rgba(34,211,238,0.2)] overflow-hidden">
+            <img 
+              src="/logo.jpeg" 
+              alt="LumoAgent Logo" 
+              className="w-7 h-7 object-cover rounded-lg"
+            />
           </div>
         </div>
         <div className="flex flex-col">
