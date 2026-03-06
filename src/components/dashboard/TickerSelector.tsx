@@ -130,7 +130,7 @@ export function TickerSelector({ ticker, onTickerChange, onAnalyze, loading, act
             <div className="pr-3 pl-2">
               <button
                 type="submit"
-                disabled={!ticker.trim() || loading}
+                disabled={!(ticker || '').trim() || loading}
                 className="flex items-center gap-2 px-6 py-3 bg-white text-void rounded-xl font-black text-xs uppercase tracking-widest transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed hover:bg-stellar hover:text-void hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]"
               >
                 {loading ? (

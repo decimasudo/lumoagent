@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import { 
   LayoutDashboard, 
@@ -10,8 +8,7 @@ import {
   LogOut, 
   Bot, 
   Trash2,
-  ChevronRight,
-  Activity
+  ChevronRight
 } from 'lucide-react'
 
 interface SidebarProps {
@@ -20,6 +17,7 @@ interface SidebarProps {
   userEmail: string | null
   history: any[]
   onSelectHistory: (item: any) => void
+  onRemoveHistory: (id: string) => void
   watchlist: any[]
   onSelectWatchlist: (ticker: string) => void
   onRemoveWatchlist: (id: string) => void
@@ -31,9 +29,10 @@ export function Sidebar({
   activeMenu, 
   setActiveMenu, 
   userEmail, 
-  history, 
+  history = [], 
   onSelectHistory, 
-  watchlist, 
+  onRemoveHistory,
+  watchlist = [], 
   onSelectWatchlist, 
   onRemoveWatchlist, 
   onSignOut,
@@ -100,7 +99,7 @@ export function Sidebar({
           </h3>
           <div className="space-y-1">
             {watchlist.length === 0 ? (
-              <p className="text-xs text-slate-600 px-2 italic">No assets tracked.</p>
+              <p className="text-xs text-slate-600 px-2 italic">Awaiting asset link...</p>
             ) : (
               watchlist.map((item) => (
                 <div key={item.id} className="group flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
@@ -141,33 +140,32 @@ export function Sidebar({
                 </p>
               </div>
             ) : history.length === 0 ? (
-              <p className="text-xs text-slate-600 px-2 italic">No previous logs indexed.</p>
+              <p className="text-xs text-slate-600 px-2 italic">Awaiting neural trace...</p>
             ) : (
-              history.slice(0, 15).map((item) => (
-                <button 
-                  key={item.id}
-                  onClick={() => onSelectHistory(item)}
-                  disabled={isAnalyzing}
-                  className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/[0.04] transition-all border border-transparent hover:border-white/5 disabled:opacity-50 text-left group overflow-hidden relative"
-                >
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-stellar/0 group-hover:bg-stellar/50 transition-all rounded-full" />
-                  <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/5 group-hover:border-stellar/20 group-hover:bg-stellar/5 transition-all flex-none">
-                    <Activity className="w-3.5 h-3.5 text-slate-600 group-hover:text-stellar transition-colors" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between gap-2">
-                      <p className="text-xs font-black text-slate-300 group-hover:text-white truncate uppercase tracking-wider">
-                        {item.ticker}
-                      </p>
-                      <p className="text-[9px] font-bold text-slate-600 group-hover:text-slate-400 whitespace-nowrap">
-                        {new Date(item.created_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
-                      </p>
-                    </div>
-                    <p className="text-[9px] text-slate-500 font-medium truncate mt-0.5 group-hover:text-slate-400 uppercase tracking-tighter">
-                      Index-Alpha-{item.id.toString().slice(-4)}
-                    </p>
-                  </div>
-                </button>
+              history.map((item) => (
+                <div key={item.id} className="group relative flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/5 transition-all border border-transparent hover:border-stellar/20 shadow-sm hover:shadow-stellar/10">
+                  <button 
+                    onClick={() => onSelectHistory(item)}
+                    disabled={isAnalyzing}
+                    className="flex-1 text-left min-w-0"
+                  >
+                    <span className="block text-sm font-bold text-slate-200 group-hover:text-stellar transition-colors truncate tracking-wide">
+                      {item.title || `Ref: ${item.id.slice(0, 8)}`}
+                    </span>
+                    <span className="block text-[8px] font-black text-slate-500 uppercase tracking-widest mt-0.5">
+                      {new Date(item.created_at).toLocaleDateString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                    </span>
+                  </button>
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onRemoveHistory(item.id);
+                    }}
+                    className="opacity-0 group-hover:opacity-100 p-1.5 text-slate-600 hover:text-red-400 hover:bg-red-400/10 rounded-md transition-all ml-1"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                  </button>
+                </div>
               ))
             )}
           </div>

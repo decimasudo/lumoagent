@@ -13,8 +13,8 @@ export async function GET(request: NextRequest) {
     }
 
     const { data, error } = await supabase
-      .from('analyses')
-      .select('*')
+      .from('chats')
+      .select('*, messages(*)')
       .eq('user_id', user.id)
       .order('created_at', { ascending: false })
       .limit(50)
@@ -45,7 +45,7 @@ export async function DELETE(request: NextRequest) {
     }
 
     const { error } = await supabase
-      .from('analyses')
+      .from('chats')
       .delete()
       .eq('id', id)
       .eq('user_id', user.id)

@@ -93,11 +93,31 @@ export async function POST(request: NextRequest) {
       const { data: { user } } = await supabase.auth.getUser()
       
       if (user) {
-        await supabase.from('analysis_history').insert({
-          user_id: user.id,
-          ticker: tickerSymbol, 
-          analysis_result: aiAnalysis
-        })
+        // Create a new chat session for this analysis
+        const { data: chatData, error: chatError } = await supabase
+          .from('chats')
+          .insert({
+            user_id: user.id,
+            title: `Analysis: ${tickerSymbol}`
+          })
+          .select()
+          .single()
+
+        if (!chatError && chatData) {
+          // Store both user prompt and assistant response
+          await supabase.from('messages').insert([
+            {
+              chat_id: chatData.id,
+              role: 'user',
+              content: promptText
+            },
+            {
+              chat_id: chatData.id,
+              role: 'assistant',
+              content: aiAnalysis
+            }
+          ])
+        }
       }
     } catch (dbError) {
       console.error("[API] Failed to save history to Supabase:", dbError)

@@ -54,7 +54,9 @@ function DashboardContent() {
     const initData = async () => {
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) {
-        router.push('/auth/signin')
+        // Allowing Guest Access
+        setUserEmail('GUEST_USER')
+        return
       } else {
         setUserEmail(user.email || null)
         fetchHistory()
@@ -168,10 +170,21 @@ function DashboardContent() {
           userEmail={userEmail} 
           history={historyList}
           onSelectHistory={(item) => { 
-            setTicker(item.ticker); 
-            setAnalysis(item.ai_analysis); 
-            setStockData(item.stock_data); 
+            // Cari pesan dari assistant dalam riwayat pesan
+            const assistantMessage = item.messages?.find((m: any) => m.role === 'assistant');
+            const userMessage = item.messages?.find((m: any) => m.role === 'user');
+            
+            // Ekstrak ticker dari title jika ada (format: "Analysis: AAPL")
+            const tickerFromTitle = item.title?.includes(': ') ? item.title.split(': ')[1] : '';
+
+            setTicker(userMessage?.content || tickerFromTitle || ''); 
+            setAnalysis(assistantMessage?.content || 'No analysis data found.'); 
+            setStockData(null); // Reset stock data karena butuh re-fetch jika ingin grafik real-time
             setActiveMenu('dashboard') 
+          }}
+          onRemoveHistory={async (id) => {
+            await fetch(`/api/history?id=${id}`, { method: 'DELETE' });
+            fetchHistory();
           }}
           watchlist={watchlist}
           onSelectWatchlist={(t) => executeAnalysis(t)}

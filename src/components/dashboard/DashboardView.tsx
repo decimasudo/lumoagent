@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect } from 'react'
 import { 
   Activity, Sparkles, LineChart, FileText, 
   BarChart3, Network, Bot, LayoutTemplate, 
-  MessageSquare, Search, AlertTriangle
+  MessageSquare, Search, AlertTriangle, Cpu
 } from 'lucide-react'
 import { QuantCard } from '@/components/dashboard/QuantCard'
 import { PriceChart } from '@/components/dashboard/PriceChart'
