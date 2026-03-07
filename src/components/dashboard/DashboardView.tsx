@@ -18,6 +18,7 @@ interface DashboardViewProps {
   toggleWatchlist: () => void
   loading: boolean
   error: string
+  userEmail: string | null
 }
 
 // Dummy steps untuk simulasi visual "Thinking Process" sebelum API OpenRouter tersambung
@@ -47,7 +48,7 @@ The user is inquiring about the upcoming market catalyst. To provide a high-qual
 > **Directive 2**: Evaluate current market sentiment for the tech sector. (Tool: \`sentiment_analysis\`)
 `
 
-export function DashboardView({ stockData, analysis, watchlist, toggleWatchlist, loading, error }: DashboardViewProps) {
+export function DashboardView({ stockData, analysis, watchlist, toggleWatchlist, loading, error, userEmail }: DashboardViewProps) {
   const [activeTab, setActiveTab] = useState<'insight' | 'financials'>('insight')
   const [mockSteps, setMockSteps] = useState<ThinkingStep[]>(INITIAL_STEPS)
   const [mockContent, setMockContent] = useState('')
@@ -192,7 +193,12 @@ export function DashboardView({ stockData, analysis, watchlist, toggleWatchlist,
           <div className="space-y-6">
             {activeTab === 'financials' && (
               <div className="animate-in fade-in zoom-in-95 duration-500">
-                <QuantCard data={stockData} isWatchlisted={watchlist.some(w => w.ticker === stockData?.symbol)} onToggleWatchlist={toggleWatchlist} />
+                <QuantCard 
+                  data={stockData} 
+                  isWatchlisted={watchlist.some(w => w.ticker === stockData?.symbol)} 
+                  onToggleWatchlist={toggleWatchlist}
+                  isLoggedIn={!!userEmail && userEmail !== 'GUEST_USER'}
+                />
               </div>
             )}
             {activeTab === 'insight' && (

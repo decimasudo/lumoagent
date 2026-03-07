@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { ArrowRight, Lock, UserPlus } from 'lucide-react'
+import { ArrowRight, Lock, UserPlus, Twitter } from 'lucide-react'
 
 export function Navbar() {
   return (
@@ -23,6 +23,15 @@ export function Navbar() {
 
       {/* Actions */}
       <div className="flex items-center space-x-6">
+        <Link 
+          href="https://x.com/jerrilagent"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden md:flex items-center text-xs font-black text-slate-400 hover:text-stellar transition-all uppercase tracking-widest"
+        >
+          <Twitter className="w-4 h-4 mr-2" />
+          X
+        </Link>
         <Link 
           href="/auth/signin" 
           className="hidden md:flex items-center text-xs font-black text-slate-400 hover:text-stellar transition-all uppercase tracking-widest"

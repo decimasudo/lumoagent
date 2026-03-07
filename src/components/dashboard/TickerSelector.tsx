@@ -96,7 +96,7 @@ export function TickerSelector({ ticker, onTickerChange, onAnalyze, loading, act
             }`}
           >
             <Sparkles className="w-3.5 h-3.5" />
-            {isJerrilOpen ? 'Close Templates' : 'Jerril Chat'}
+            {isJerrilOpen ? 'Close Templates' : 'Analize stocks'}
             <ChevronUp className={`w-3.5 h-3.5 transition-transform duration-300 ${isJerrilOpen ? 'rotate-180' : ''}`} />
           </button>
         </div>

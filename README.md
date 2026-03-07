@@ -1,20 +1,20 @@
-Official X Account: https://x.com/Lumoagent </br>
-Official Website: https://www.lumoagent.site/
+Official X Account: https://x.com/jerrilagent </br>
+Official Website: https://www.jerril.site/
 
 Contract Address: CPiuNhqy7XWv8Dp9APcAoaQjvvgqtiCDMwucRxcEpump
 
 <p align="center">
-  <img src="public/logo.jpeg" alt="LumoAgent" width="180px" style="border-radius: 20px; border: 2px solid #f97316;">
+  <img src="public/logo.jpeg" alt="JerrilAgent" width="180px" style="border-radius: 20px; border: 2px solid #f97316;">
 </p>
 
-<h1 align="center">LumoHub</h1>
+<h1 align="center">JerrilHub</h1>
 
 <p align="center">
   <strong>The High-Performance Quantitative Intelligence Layer for Modern Markets</strong>
 </p>
 
 <p align="center">
-  <a href="https://github.com/decimasudo/lumoagent/actions"><img src="https://github.com/decimasudo/lumoagent/actions/workflows/ci.yml/badge.svg" alt="CI Status"></a>
+  <a href="https://github.com/decimasudo/jerrilagent/actions"><img src="https://github.com/decimasudo/jerrilagent/actions/workflows/ci.yml/badge.svg" alt="CI Status"></a>
   <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-14.2%2B-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js"></a>
   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"></a>
 </p>
@@ -22,50 +22,84 @@ Contract Address: CPiuNhqy7XWv8Dp9APcAoaQjvvgqtiCDMwucRxcEpump
 
 ---
 
-## ⚡ The Logic of LUMO
+## ⚡ The Logic of JERRIL
 
 When the age of financial AI began, it did not begin gently. New systems appeared almost overnight — faster, sharper, relentlessly optimized. They were engineered to predict before others could react, to trade before others could think, to capture opportunity with mechanical precision. Every model was built with the same ambition: outperform, outpace, outmaneuver. The markets became an arena of algorithms.
 
-**LUMO was born from a different question: What if intelligence didn’t have to be aggressive to be powerful?**
+**JERRIL was born from a different question: What if intelligence didn’t have to be aggressive to be powerful?**
 
-LumoHub is not just a dashboard; it is a **multi-nodal orchestration engine** designed to bridge the gap between complex quantitative data and human-centric decision-making. While others focus on beating the market, LUMO focuses on guiding the person navigating it. 
+JerrilHub is not just a dashboard; it is a **multi-nodal orchestration engine** designed to bridge the gap between complex quantitative data and human-centric decision-making. While others focus on beating the market, JERRIL focuses on guiding the person navigating it. 
+
+---
+
+## 🏗 Modular Architecture
+
+JerrilHub is built with a decoupled architecture to ensure high availability and low latency.
+
+```mermaid
+graph TD
+    User((User)) -->|Next.js App Router| Frontend[Frontend UI]
+    Frontend -->|API Routes| Middleware[Edge Middleware]
+    Middleware -->|Async| Orchestrator{AI Orchestrator}
+    
+    Orchestrator -->|Web Scraping/API| DataLayer[Market Data Layer]
+    Orchestrator -->|Prompt Engineering| LLM[OpenRouter Matrix]
+    
+    DataLayer -->|REST| YF[Yahoo Finance]
+    LLM -->|Routing| Models[Claude/GPT-4o/Gemini]
+    
+    Frontend -->|Persistence| Supabase[(Supabase DB/Auth)]
+```
+
+### 🔐 Multi-Tier Authentication
+Integrated with **Supabase Auth**, the system supports:
+- **Guest Sessioning**: Stateless interaction for immediate utility.
+- **Operator Persistence**: Full JWT-based sessions for encrypted watchlist and history synchronization.
+
+### 📡 Data Synchronization
+- **Market Sockets**: Simulated real-time telemetry for 28+ quantitative factors.
+- **Historical Regression**: 60-day buffer mapping for technical projection.
 
 ---
 
 ## 🛠 Core Technical Stack
 
-| Layer | Technology | Implementation |
-|----------|----------------------|-------|
-| **Frontend** | Next.js 14 (App Router) | React Server Components & Edge Runtime |
-| **3D Rendering** | React Three Fiber | Real-time state-synced "System Thinking" Visualizer |
-| **Real-time Data** | Yahoo Finance SDK | Synchronous market capture & historical regression |
-| **AI Orchestration** | OpenRouter (LLM Matrix) | Dynamic routing between Claude 3.5 & GPT-4o-mini |
-| **Auth & DB** | Supabase (PostgreSQL) | Secure session management & encrypted watchlist sync |
+| Layer | Technology | Implementation Detail |
+|----------|----------------------|-----------------------|
+| **Frontend** | Next.js 14 (App Router) | React Server Components & Edge Runtime Optimization |
+| **State Management** | React Context + URL State | Deep-linkable research trajectories |
+| **3D Rendering** | React Three Fiber (R3F) | GLSL Shaders & Physics-synced "Thinking" animations |
+| **Real-time Data** | Yahoo Finance SDK | Synchronous market capture & historical regression mapping |
+| **AI Orchestration** | OpenRouter Matrix | Dynamic routing with failure-recovery (Claude 3.5 ↔ GPT-4o-mini) |
+| **Persistence** | Supabase (PostgreSQL) | RLS-protected (Row Level Security) user data sync |
+| **Styling** | Tailwind CSS + Framer Motion | High-fidelity Glassmorphic HUD interface |
 
 ---
 
-## 🧠 System Architecture
+## 🧠 Intelligence Engine (Neural Pipeline)
 
-LumoHub employs a **Triple-Verification Pipeline** for every asset analysis:
+JerrilHub employs a **Triple-Verification Pipeline** for every asset analysis:
 
-### **The Multi-Nodal Workflow**
-1.  **Ingestion**: Streaming market data via Yahoo Finance SDK.
-2.  **Specialization**: Parallel node processing for Technical, Fundamental, and Sentiment layers.
-3.  **Orchestration**: LUMO Core synthesizes disparate data into a unified IQ score.
-4.  **Visualization**: Real-time state mapping to the 3D HUD.
+1.  **Ingestion Layer**: Asynchronous fetching of TICKER telemetry via Yahoo Finance SDK.
+2.  **Specialization Nodes**:
+    - `Nodal-A (Fundamental)`: Balance sheets, Cash Flow metrics, and Growth projections.
+    - `Nodal-B (Technical)`: RSI 14, MACD divergence, and Volume profile analysis.
+    - `Nodal-C (Sentiment)`: News aggregate synthesis and Social-Market weighting.
+3.  **Synthesis (The JERRIL Core)**: Synthesizes disparate data into a unified, markdown-ready IQ score.
+4.  **Holographic Mapping**: Real-time state mapping to the 3D HUD animation states.
 
 ---
 
 ### 1. The Multi-Agent Orchestrator
-Unlike static bots, LumoHub delegates complex reasoning to specialized sub-prompts:
+The backend leverages specialized system instructions ("Modalities") to simulate various expert roles:
 - **Warren_Mod**: Deep fundamental logic focusing on value, growth, and cash flow stability.
-- **Quant_Mod**: Aggressive technical analysis focusing on volatility, RSI, and MACD divergence.
+- **Quant_Mod**: Aggressive technical analysis focusing on volatility and momentum.
 
-### 2. Physical State Sync
-The 3D **LumoAgent Core** is not cosmetic. Its animation states are directly mapped to the API response lifecycle:
-- **Idle**: WebSocket connection standby.
-- **Thinking**: Token-by-token streaming visualization.
-- **Success/Alert**: Reactive lighting based on risk assessment results.
+### 2. R3F Physical State Sync
+The 3D **JerrilAgent Core** is integrated into the React lifecycle. Animation states are triggered by IPC (Inter-Process Communication) simulation:
+- **IDLE**: Connection standby, low-energy respiration animation.
+- **THINKING**: Multi-threaded scanner activation, increased vertex oscillation.
+- **RESOLVED**: Success lighting pulse (cyan) or risk alert pulse (orange).
 
 ---
 
@@ -73,59 +107,67 @@ The 3D **LumoAgent Core** is not cosmetic. Its animation states are directly map
 
 ### Prerequisites
 - **Node.js** ^18.17.0
-- **Pnpm** (Deterministic dependency resolution)
-
-### Quick Start
-```bash
-git clone https://github.com/decimasudo/lumoagent.git
-cd lumoagent
-pnpm install
-pnpm dev
-```
+- **Pnpm** (Recommended for deterministic dependency resolution)
 
 ### Environment Configuration
-Required variables for the intelligence layer:
+Create a `.env.local` file with the following neural parameters:
 ```env
-NEXT_PUBLIC_SUPABASE_URL=...
-NEXT_PUBLIC_SUPABASE_ANON_KEY=...
-OPENROUTER_API_KEY=... # For multi-model orchestration
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+
+# OpenRouter Configuration (Multi-model support)
+OPENROUTER_API_KEY=your_key
+```
+
+### System Initialization
+```bash
+# Install dependencies
+pnpm install
+
+# Initialize local development environment
+pnpm dev
+
+# Build production artifacts
+pnpm build
 ```
 
 ---
 
 ## 📈 Performance Benchmarks
 
-- **Time to First Token (TTFT)**: < 400ms via Vercel Edge.
-- **Data Latency**: Synchronized within 2s of global market ticks.
-- **Factor Coverage**: 28+ distinct quantitative metrics per ticker.
+- **TTFT (Time to First Token)**: < 400ms via Vercel Edge.
+- **Schema Validation**: Type-safe data handling with Zod and TypeScript.
+- **Layout Shift (CLS)**: Scaled to zero-jitter via optimized skeleton loading.
+- **Resource Usage**: Lazy-loaded 3D assets to minimize initial hydration payload.
 
 ---
 
 ## 🛡 Security & Ethics
 
-LUMO is engineered as an **Ethical Guardrail**. It is programmed to identify "FOMO" patterns and high-risk liquidity traps, prioritizing clarity over speculative hype. It is an intelligence that serves before it competes—calm in chaos, patient in volatility.
+JERRIL is engineered as an **Ethical Guardrail**. It is programmed to identify "FOMO" patterns and high-risk liquidity traps, prioritizing clarity over speculative hype. It is an intelligence that serves before it competes—calm in chaos, patient in volatility.
 
 ---
 
 ## 🤝 Contribution & Governance
 
-Join the development of the next-gen financial intelligence layer. Follow the [Developer on X](https://x.com/Lumoagent) for system updates.
+Join the development of the next-gen financial intelligence layer. Follow the [Developer on X](https://x.com/jerrilagent) for system updates.
 
 [MIT License](./LICENSE) | Created by **decimasudo**
 
 ```mermaid
 graph LR
     A["🔍 Ticker Input"] --> B["📊 Market Data Fetch"]
-    B -->|"Yahoo Finance"| C["🤖 LumoAgent Analysis"]
+    B -->|"Yahoo Finance"| C["🤖 JerrilAgent Analysis"]
     C -->|"OpenRouter"| D["📈 Risk/Value Report"]
     D -->|"Supabase"| E["✅ Save to Watchlist"]
 ```
 
 ---
 
-## LumoAgent Intelligence Methodology
+## JerrilAgent Intelligence Methodology
 
-LumoAgent's core engine uses a multi-layered verification cycle for every stock ticker.
+JerrilAgent's core engine uses a multi-layered verification cycle for every stock ticker.
 
 ```mermaid
 flowchart TD
@@ -155,7 +197,7 @@ flowchart TD
 
 ## AI Orchestration Layer
 
-LumoHub is a **strategic orchestrator** that delegates high-latency reasoning to specialized virtual analyst nodes:
+JerrilHub is a **strategic orchestrator** that delegates high-latency reasoning to specialized virtual analyst nodes:
 
 - **Market Analysts**: Valuation metrics, growth projections, and dividend safety.
 - **Risk Managers**: Alpha/Beta calculations, volatility tracking, and hedging strategies.
@@ -165,7 +207,7 @@ LumoHub is a **strategic orchestrator** that delegates high-latency reasoning to
 
 ## Model Optimization Policy
 
-LumoAgent dynamically assigns models via OpenRouter to balance cost and accuracy.
+JerrilAgent dynamically assigns models via OpenRouter to balance cost and accuracy.
 
 | Tier | Model | Best For |
 |---------|-------|----------|
@@ -184,7 +226,7 @@ LumoAgent dynamically assigns models via OpenRouter to balance cost and accuracy
 
 ### 🔨 Phase 2: Intelligence
 - Real-time Price Synchronization
-- LumoAgent Thinking Process (Multi-modal)
+- JerrilAgent Thinking Process (Multi-modal)
 - AI Justification & Market Sentiment (Bull vs Bear)
 
 ### 📄 Phase 3: Portfolio
@@ -208,11 +250,11 @@ LumoAgent dynamically assigns models via OpenRouter to balance cost and accuracy
 ## Folder Structure
 
 ```
-lumoagent/
+quantai/
 ├── src/
 │   ├── app/              # App Router Pages (Dashboard, Auth, Skills)
 │   ├── components/       # UI & Dashboard Widgets
-│   │   ├── Robot3D.tsx   # LumoAgent 3D Core
+│   │   ├── Robot3D.tsx   # JerrilAgent 3D Core
 │   │   └── dashboard/    # Market Views & Charts
 │   ├── lib/              # Core Logic (Market APIs, AI, Supabase)
 │   └── types/            # TypeScript Definitions
@@ -227,14 +269,14 @@ lumoagent/
 ### Q: Where does the market data come from?
 We use the Yahoo Finance API (via `finance-yahoo-query`) for real-time and historical equity data.
 
-### Q: Is LumoAgent purely cosmetic?
-No. While it provides a 3D visual presence, its state is synchronized with the **Thinking Process** component. When the AI is "Thinking", the LumoAgent scanner in the chest area increases frequency and the robot displays "active" animations.
+### Q: Is JerrilAgent purely cosmetic?
+No. While it provides a 3D visual presence, its state is synchronized with the **Thinking Process** component. When the AI is "Thinking", the JerrilAgent scanner in the chest area increases frequency and the robot displays "active" animations.
 
 ---
 
 ## Community & Contributing
 
-Follow the development on our [GitHub Discussions](https://github.com/decimasudo/lumoagent/discussions) or follow the creator on [X (Twitter)](https://x.com/Lumoagent).
+Follow the development on our [GitHub Discussions](https://github.com/decimasudo/jerrilagent/discussions) or follow the creator on [X (Twitter)](https://x.com/jerrilagent).
 
 ### Quick Contribution Guide
 
@@ -247,7 +289,7 @@ Follow the development on our [GitHub Discussions](https://github.com/decimasudo
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=decimasudo/lumoagent&type=date)](https://star-history.com/#decimasudo/lumoagent&date)
+[![Star History Chart](https://api.star-history.com/svg?repos=decimasudo/jerrilagent&type=date)](https://star-history.com/#decimasudo/jerrilagent&date)
 
 ---
 

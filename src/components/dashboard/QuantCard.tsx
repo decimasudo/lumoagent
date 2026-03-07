@@ -14,9 +14,10 @@ interface QuantCardProps {
   data: any;
   isWatchlisted: boolean;
   onToggleWatchlist: () => void;
+  isLoggedIn?: boolean;
 }
 
-export function QuantCard({ data, isWatchlisted, onToggleWatchlist }: QuantCardProps) {
+export function QuantCard({ data, isWatchlisted, onToggleWatchlist, isLoggedIn }: QuantCardProps) {
   if (!data || !data.quantitative) {
     return (
       <div className="flex flex-col items-center justify-center p-12 glass-card border border-white/5 rounded-3xl opacity-50">
@@ -57,16 +58,22 @@ export function QuantCard({ data, isWatchlisted, onToggleWatchlist }: QuantCardP
           </div>
         </div>
 
-        <button
-          onClick={onToggleWatchlist}
-          className={`relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all duration-300 border
-            ${isWatchlisted 
-              ? 'bg-stellar/10 text-stellar border-stellar/30 shadow-[0_0_20px_rgba(34,211,238,0.2)]' 
-              : 'bg-white/5 text-slate-400 border-white/10 hover:text-white hover:bg-white/10'}`}
-        >
-          <Star className={`w-4 h-4 ${isWatchlisted ? 'fill-stellar' : ''}`} />
-          {isWatchlisted ? 'Tracked' : 'Track Asset'}
-        </button>
+        {isLoggedIn ? (
+          <button
+            onClick={onToggleWatchlist}
+            className={`relative z-10 flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all duration-300 border
+              ${isWatchlisted 
+                ? 'bg-stellar/10 text-stellar border-stellar/30 shadow-[0_0_20px_rgba(34,211,238,0.2)]' 
+                : 'bg-white/5 text-slate-400 border-white/10 hover:text-white hover:bg-white/10'}`}
+          >
+            <Star className={`w-4 h-4 ${isWatchlisted ? 'fill-stellar' : ''}`} />
+            {isWatchlisted ? 'Tracked' : 'Track Asset'}
+          </button>
+        ) : (
+          <div className="relative z-10 flex items-center gap-2 px-4 py-2 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-400">
+            <span className="text-[9px] font-black uppercase tracking-widest">Login to Watchlist</span>
+          </div>
+        )}
       </div>
 
       {/* Metrics Grid */}

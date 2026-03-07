@@ -8,7 +8,6 @@ import { Bot, Cpu } from 'lucide-react'
 import { Sidebar } from '@/components/dashboard/Sidebar'
 import { DashboardView } from '@/components/dashboard/DashboardView'
 import { AgentsView } from '@/components/dashboard/AgentsView'
-import { SettingsView } from '@/components/dashboard/SettingsView'
 import { DashboardHeader } from '@/components/dashboard/DashboardHeader'
 import { TickerSelector } from '@/components/dashboard/TickerSelector'
 import { InteractiveBackground } from '@/components/landing/InteractiveBackground'
@@ -245,6 +244,7 @@ function DashboardContent() {
                 toggleWatchlist={toggleWatchlist}
                 loading={loading}
                 error={error}
+                userEmail={userEmail}
               />
             )}
             {activeMenu === 'agents' && (
@@ -253,10 +253,7 @@ function DashboardContent() {
                 onModelSelect={setSelectedModel}
               />
             )}
-            {activeMenu === 'settings' && (
-              <SettingsView />
-            )}
-            {activeMenu !== 'dashboard' && activeMenu !== 'agents' && activeMenu !== 'settings' && (
+            {activeMenu !== 'dashboard' && activeMenu !== 'agents' && (
               <div className="text-center py-20 text-slate-600 uppercase tracking-[0.2em] font-black text-xs">
                 Module Under Construction
               </div>
