@@ -14,9 +14,10 @@ Contract Address: TBD
 </p>
 
 <p align="center">
-  <a href="https://github.com/decimasudo/jerrilagent/actions"><img src="https://github.com/decimasudo/jerrilagent/actions/workflows/ci.yml/badge.svg" alt="CI Status"></a>
   <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-14.2%2B-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js"></a>
   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"></a>
+  <a href="https://www.rust-lang.org/"><img src="https://img.shields.io/badge/Rust-2024-000000?style=for-the-badge&logo=rust&logoColor=white" alt="Rust"></a>
 </p>
 
 
