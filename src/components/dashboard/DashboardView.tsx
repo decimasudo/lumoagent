@@ -116,7 +116,7 @@ export function DashboardView({ stockData, analysis, watchlist, toggleWatchlist,
             </div>
           </div>
           <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white mb-4">
-            Lumo <span className="text-transparent bg-clip-text bg-gradient-to-r from-stellar to-blue-500">Workspace</span>
+            JERRIL <span className="text-transparent bg-clip-text bg-gradient-to-r from-stellar to-blue-500">Workspace</span>
           </h2>
           <p className="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] max-w-md leading-relaxed">
             Neural Financial Research Terminal.<br/>
